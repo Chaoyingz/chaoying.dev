@@ -130,3 +130,6 @@ dmypy.json
 
 # Task file
 .task
+
+# IDE
+.idea
