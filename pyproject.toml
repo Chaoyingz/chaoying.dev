@@ -13,6 +13,13 @@ loguru = "^0.5.3"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.17.7"}
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+isort = "^5.9.3"
+flake8 = "^3.9.2"
+mypy = "^0.910"
+ipython = "^7.27.0"
+coverage = "^5.5"
+black = "^21.9b0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
