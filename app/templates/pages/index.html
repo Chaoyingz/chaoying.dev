@@ -1,0 +1,12 @@
+{% include "./layout.html" %} {% block style %}
+<link
+  href="{{ url_for('static', path='/css/pages/index.css') }}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block body %}
+<div class="cy-container index">
+  <div class="index-left"></div>
+  <div class="index-split"></div>
+  <div class="index-right"></div>
+</div>
+{% endblock %}

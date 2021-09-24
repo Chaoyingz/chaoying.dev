@@ -1,6 +1,6 @@
 from starlette.applications import Starlette
 
-from app.api.routes.api import routes
+from app.api.routes.url import routes
 from app.core.config import DEBUG
 from app.core.events import create_start_app_handler
 

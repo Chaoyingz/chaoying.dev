@@ -1,0 +1,19 @@
+.index {
+  display: flex;
+  margin-top: 20px;
+}
+
+.index-left {
+  flex: 1 1 0;
+}
+
+.index-split {
+  min-height: 100vh;
+  margin-right: 56px;
+  border-right: 1px solid rgba(230, 230, 230, 1);
+  padding-right: 56px;
+}
+
+.index-right {
+  width: 336px;
+}

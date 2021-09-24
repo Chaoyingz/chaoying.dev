@@ -1,5 +1,5 @@
 default:
-	make lint
+	make format
 
 format:
 	@echo "Format the code (and imports)."

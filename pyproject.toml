@@ -11,6 +11,9 @@ starlette = "^0.15.0"
 uvicorn = {extras = ["standard"], version = "^0.15.0"}
 loguru = "^0.5.3"
 tortoise-orm = {extras = ["asyncpg"], version = "^0.17.7"}
+Jinja2 = "^3.0.1"
+python-multipart = "^0.0.5"
+markdown2 = "^2.4.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

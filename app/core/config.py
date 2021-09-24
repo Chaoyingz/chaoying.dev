@@ -1,9 +1,11 @@
 import logging
 import sys
+from pathlib import Path
 
 from loguru import logger
 from starlette.config import Config
 from starlette.datastructures import Secret
+from starlette.templating import Jinja2Templates
 
 from app.core.logging import InterceptHandler
 
@@ -13,12 +15,18 @@ config = Config(".env")
 
 DEBUG: bool = config("DEBUG", cast=bool, default=False)
 
+# database
 DATABASE_URL: Secret = config("DATABASE_URL", cast=Secret)
 MAX_CONNECTIONS_COUNT: int = config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
 MIN_CONNECTIONS_COUNT: int = config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 
+# directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+STATIC_DIR = BASE_DIR / "static"
+TEMPLATE_DIR = BASE_DIR / "templates"
+templates = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
-# logging configuration
+# logger
 LOGGING_LEVEL = logging.DEBUG if DEBUG else logging.INFO
 LOGGERS = ("uvicorn.asgi", "uvicorn.access")
 
