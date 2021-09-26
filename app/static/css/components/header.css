@@ -37,8 +37,43 @@ header {
   display: flex;
 }
 
+.header-right-upload {
+  position: relative;
+  height: 34px;
+  width: 34px;
+  margin-right: 16px;
+  cursor: pointer;
+}
+
+.header-right-upload label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 34px;
+  width: 34px;
+  cursor: pointer;
+}
+
+.header-right-upload input[type="file"] {
+  display: none;
+}
+
+.header-right-upload img {
+  visibility: visible;
+  position: absolute;
+  top: 6px;
+  left: 5px;
+  height: 24px;
+  width: 24px;
+}
+
+.header-right-upload button {
+  cursor: pointer;
+}
+
 .header-right-login {
   display: block;
+  margin-left: 16px;
   height: 32px;
   line-height: 32px;
   padding: 0 20px;

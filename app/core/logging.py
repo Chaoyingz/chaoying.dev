@@ -1,8 +1,11 @@
 import logging
+import sys
 from types import FrameType
 from typing import cast
 
 from loguru import logger
+
+from app.core.config import config
 
 
 class InterceptHandler(logging.Handler):
@@ -22,3 +25,15 @@ class InterceptHandler(logging.Handler):
         logger.opt(depth=depth, exception=record.exc_info).log(
             level, record.getMessage()
         )
+
+
+async def init_logger() -> None:
+    LOGGERS = ("uvicorn.asgi", "uvicorn.access")
+
+    logging.getLogger().handlers = [InterceptHandler()]
+    logging.getLogger("uvicorn").handlers = []
+    for logger_name in LOGGERS:
+        logging_logger = logging.getLogger(logger_name)
+        logging_logger.handlers = [InterceptHandler(level=config.logging_level)]
+
+    logger.configure(handlers=[{"sink": sys.stderr, "level": config.logging_level}])

@@ -3,11 +3,13 @@ from typing import Any, Callable
 from loguru import logger
 from starlette.applications import Starlette
 
+from app.core.logging import init_logger
 from app.db.events import connect_to_db
 
 
 def create_start_app_handler(app: Starlette) -> Callable[..., Any]:
     async def start_app() -> None:
+        await init_logger()
         await connect_to_db(app)
 
     return start_app

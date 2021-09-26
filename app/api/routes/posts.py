@@ -3,14 +3,14 @@ from starlette.requests import Request
 from starlette.responses import JSONResponse, RedirectResponse
 from starlette.routing import Router
 
-from app.core.config import templates
+from app.core.config import config
 from app.models.posts import Post
 
 router = Router()
 
 
 async def index(request: Request) -> JSONResponse:
-    return templates.TemplateResponse("pages/index.html", {"request": request})
+    return config.templates.TemplateResponse("pages/index.html", {"request": request})
 
 
 async def upload_post(request: Request) -> RedirectResponse:
