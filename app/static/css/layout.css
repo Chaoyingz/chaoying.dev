@@ -1,32 +1,32 @@
 html {
-  font-family: BlinkMacSystemFont, -apple-system, Helvetica sans-serif;
-  color: rgba(8, 8, 8, 1);
+    font-family: BlinkMacSystemFont, -apple-system, Helvetica sans-serif;
+    color: rgba(8, 8, 8, 1);
 }
 
 a {
-  text-decoration: none;
-  color: rgba(8, 8, 8, 1);
+    text-decoration: none;
+    color: rgba(8, 8, 8, 1);
 }
 
 a:hover {
-  color: rgba(41, 41, 41, 1);
+    color: rgba(41, 41, 41, 1);
 }
 
 ul,
 li {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 button {
-  background: none;
-  border: none;
-  padding: 0;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
 .cy-container {
-  max-width: 1280px;
-  width: 100%;
-  margin: auto;
+    max-width: 1024px;
+    width: 100%;
+    margin: auto;
 }

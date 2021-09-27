@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{% block title %} Chaoying.dev {% endblock %}</title>
-    <link
-      href="{{ url_for('static', path='/css/normalize.css') }}"
-      rel="stylesheet"
-    />
-    <link
-      href="{{ url_for('static', path='/css/layout.css') }}"
-      rel="stylesheet"
-    />
-    {% block style %}{% endblock %}
-  </head>
-  <body>
-    <div id="app">
-      {% block header %} {% include "./components/header.html" %} {% endblock %}
-      <main>{% block body %}{% endblock %}</main>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script src="{{ url_for('static', path='/js/layout.js') }}"></script>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>{% block title %}{% endblock %} | Chaoying.dev</title>
+        <link
+            href="{{ url_for('static', path='/css/normalize.css') }}"
+            rel="stylesheet"
+        />
+        <link
+            href="{{ url_for('static', path='/css/layout.css') }}"
+            rel="stylesheet"
+        />
+        {% block style %}{% endblock %}
+    </head>
+    <body>
+        <div id="app">
+            {% block header %} {% include "./components/header.html" %} {%
+            endblock %}
+            <main>{% block body %}{% endblock %}</main>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="{{ url_for('static', path='/js/layout.js') }}"></script>
+    </body>
 </html>

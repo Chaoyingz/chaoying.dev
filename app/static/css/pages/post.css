@@ -1,0 +1,18 @@
+.post {
+    margin-top: 42px;
+}
+
+.post-title {
+    margin-bottom: 36px;
+}
+
+.post-title h1 {
+    font-size: 46px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.post-date {
+    color: rgba(117, 117, 117, 1);
+}

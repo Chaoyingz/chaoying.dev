@@ -9,5 +9,6 @@ routes = [
     Route(
         "/upload_post", endpoint=posts.upload_post, methods=["POST"], name="upload_post"
     ),
+    Route("/posts/{post_id:int}", endpoint=posts.get_post, name="get_post"),
     Mount("/static", app=StaticFiles(directory=config.static_dir), name="static"),
 ]

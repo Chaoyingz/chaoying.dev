@@ -1,19 +1,18 @@
 .index {
-  display: flex;
-  margin-top: 20px;
+    display: flex;
 }
 
 .index-left {
-  flex: 1 1 0;
+    flex: 1 1 0;
 }
 
 .index-split {
-  min-height: calc(100vh - 114px);
-  margin-right: 56px;
-  border-right: 1px solid rgba(230, 230, 230, 1);
-  padding-right: 56px;
+    min-height: calc(100vh - 114px);
+    margin-right: 56px;
+    border-right: 1px solid rgba(230, 230, 230, 1);
+    padding-right: 56px;
 }
 
 .index-right {
-  width: 336px;
+    width: 336px;
 }
