@@ -5,7 +5,7 @@ from typing import cast
 
 from loguru import logger
 
-from app.core.config import config
+from app.core import config
 
 
 class InterceptHandler(logging.Handler):
@@ -34,6 +34,6 @@ async def init_logger() -> None:
     logging.getLogger("uvicorn").handlers = []
     for logger_name in LOGGERS:
         logging_logger = logging.getLogger(logger_name)
-        logging_logger.handlers = [InterceptHandler(level=config.logging_level)]
+        logging_logger.handlers = [InterceptHandler(level=config.LOGGING_LEVEL)]
 
-    logger.configure(handlers=[{"sink": sys.stderr, "level": config.logging_level}])
+    logger.configure(handlers=[{"sink": sys.stderr, "level": config.LOGGING_LEVEL}])

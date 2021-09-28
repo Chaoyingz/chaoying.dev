@@ -7,25 +7,23 @@ from starlette.templating import Jinja2Templates
 
 
 class AppConfig:
-    _config = Config(".env")
+    env = Config(".env")
 
-    api_prefix = "/api"
-
-    debug: bool = _config("DEBUG", cast=bool, default=False)
+    DEBUG: bool = env("DEBUG", cast=bool, default=False)
 
     # database
-    database_url: Secret = _config("DATABASE_URL", cast=Secret)
-    max_connections_count: int = _config("MAX_CONNECTIONS_COUNT", cast=int, default=10)
-    min_connections_count: int = _config("MIN_CONNECTIONS_COUNT", cast=int, default=10)
+    DATABASE_URL: Secret = env("DATABASE_URL", cast=Secret)
+    MAX_CONNECTIONS_COUNT: int = env("MAX_CONNECTIONS_COUNT", cast=int, default=10)
+    MIN_CONNECTIONS_COUNT: int = env("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 
     # directory
-    base_dir = Path(__file__).resolve().parent.parent
-    static_dir = base_dir / "static"
-    template_dir = base_dir / "templates"
-    templates = Jinja2Templates(directory=str(template_dir))
+    BASE_DIR = Path(__file__).resolve().parent.parent
+    STATIC_DIR = BASE_DIR / "static"
+    TEMPLATE_DIR = BASE_DIR / "templates"
+    TEMPLATES = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
     # logger
-    logging_level = logging.DEBUG if debug else logging.INFO
+    LOGGING_LEVEL = logging.DEBUG if DEBUG else logging.INFO
 
 
 config = AppConfig()

@@ -1,54 +1,58 @@
 {% block style %}
 <link
-  href="{{ url_for('static', path='/css/components/header.css') }}"
-  rel="stylesheet"
+    href="{{ url_for('static', path='/css/components/header.css') }}"
+    rel="stylesheet"
 />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-  href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
-  rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap"
+    rel="stylesheet"
 />
 {% endblock %} {% block header %}
 <header>
-  <div class="cy-container header">
-    <div class="header-left">
-      <div class="header-left-logo">
-        <a href="/" class="header-left-logo">Chaoying's Blog</a>
-      </div>
-      <nav class="header-left-nav">
-        <a href="">所有文章</a>
-        <a href="">关于我</a>
-      </nav>
+    <div class="cy-container header">
+        <div class="header-left">
+            <div class="header-left-logo">
+                <a href="/" class="header-left-logo">Chaoying's Blog</a>
+            </div>
+            <nav class="header-left-nav">
+                <a href="">所有文章</a>
+                <a href="">关于我</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <form
+                action="{{ url_for('upload_post') }}"
+                method="post"
+                enctype="multipart/form-data"
+                class="header-right-upload"
+            >
+                <label v-show="!components.header.post" title="上传文章">
+                    <input
+                        type="file"
+                        accept=".md"
+                        name="post_file"
+                        v-model="components.header.post"
+                    />
+                    <img
+                        src="{{ url_for('static', path='/svg/quill.svg') }}"
+                        alt="上传文章"
+                    />
+                </label>
+                <button
+                    type="submit"
+                    v-show="components.header.post"
+                    title="提交文章"
+                >
+                    <img
+                        src="{{ url_for('static', path='/svg/refresh.svg') }}"
+                        alt="提交文章"
+                    />
+                </button>
+            </form>
+            <a class="header-right-login" href="">作者登录</a>
+        </div>
     </div>
-    <div class="header-right">
-      <form
-        action="{{ url_for('upload_post') }}"
-        method="post"
-        enctype="multipart/form-data"
-        class="header-right-upload"
-      >
-        <label v-show="!components.header.post" title="上传文章">
-          <input
-            type="file"
-            accept=".md"
-            name="post_file"
-            v-model="components.header.post"
-          />
-          <img
-            src="{{ url_for('static', path='/svg/quill.svg') }}"
-            alt="上传文章"
-          />
-        </label>
-        <button type="submit" v-show="components.header.post" title="提交文章">
-          <img
-            src="{{ url_for('static', path='/svg/refresh.svg') }}"
-            alt="提交文章"
-          />
-        </button>
-      </form>
-      <a class="header-right-login" href="">作者登录</a>
-    </div>
-  </div>
 </header>
 {% endblock %} {% block script %} {% endblock %}
