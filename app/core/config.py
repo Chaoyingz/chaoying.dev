@@ -7,7 +7,11 @@ from starlette.templating import Jinja2Templates
 
 
 class AppConfig:
-    env = Config(".env")
+    BASE_DIR = Path(__file__).resolve().parent.parent.parent
+
+    ENV_FILE_PATH = BASE_DIR / ".env"
+
+    env = Config(ENV_FILE_PATH)
 
     DEBUG: bool = env("DEBUG", cast=bool, default=False)
 
@@ -17,13 +21,18 @@ class AppConfig:
     MIN_CONNECTIONS_COUNT: int = env("MIN_CONNECTIONS_COUNT", cast=int, default=10)
 
     # directory
-    BASE_DIR = Path(__file__).resolve().parent.parent
-    STATIC_DIR = BASE_DIR / "static"
-    TEMPLATE_DIR = BASE_DIR / "templates"
+    APP_DIR = BASE_DIR / "app"
+    STATIC_DIR = APP_DIR / "static"
+    TEMPLATE_DIR = APP_DIR / "templates"
     TEMPLATES = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
     # logger
     LOGGING_LEVEL = logging.DEBUG if DEBUG else logging.INFO
+
+    # GITHUB
+    GITHUB_CLIENT_ID: Secret = env("GITHUB_CLIENT_ID", cast=Secret)
+    GITHUB_SECRET: Secret = env("GITHUB_SECRET", cast=Secret)
+    GITHUB_USER: Secret = env("GITHUB_USER", cast=Secret)
 
 
 config = AppConfig()

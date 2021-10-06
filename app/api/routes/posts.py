@@ -10,9 +10,9 @@ from app.models.posts import Post
 router = Router()
 
 
-async def index(request: Request) -> Response:
+async def homepage(request: Request) -> Response:
     posts = await Post.all()
-    return TemplateResponse("pages/index.html", {"request": request, "posts": posts})
+    return TemplateResponse("pages/homepage.html", {"request": request, "posts": posts})
 
 
 async def upload_post(request: Request) -> RedirectResponse:
@@ -23,7 +23,7 @@ async def upload_post(request: Request) -> RedirectResponse:
     body_html = markdown2.markdown(body_md, extras=["fenced-code-blocks"])
     slug = slugify(title, max_length=64)
     await Post.create(title=title, body=body_html, slug=slug)
-    return RedirectResponse(url=request.url_for("index"), status_code=303)
+    return RedirectResponse(url=request.url_for("homepage"), status_code=303)
 
 
 async def get_post(request: Request) -> Response:
