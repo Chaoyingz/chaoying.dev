@@ -3,7 +3,8 @@ from pathlib import Path
 
 from starlette.config import Config
 from starlette.datastructures import Secret
-from starlette.templating import Jinja2Templates
+
+from app.core.templating import Jinja2Templates
 
 
 class AppConfig:
@@ -14,6 +15,11 @@ class AppConfig:
     env = Config(ENV_FILE_PATH)
 
     DEBUG: bool = env("DEBUG", cast=bool, default=False)
+
+    # Auth
+    SECRET_KEY: str = env("SECRET_KEY")
+    SECRET_ALGORITHM: str = env("SECRET_ALGORITHM")
+    TOKEN_KEY: str = "token"
 
     # database
     DATABASE_URL: Secret = env("DATABASE_URL", cast=Secret)

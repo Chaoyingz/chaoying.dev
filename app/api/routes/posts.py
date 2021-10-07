@@ -1,5 +1,6 @@
 import markdown2
 from slugify import slugify
+from starlette.authentication import requires
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import Router
@@ -15,6 +16,7 @@ async def homepage(request: Request) -> Response:
     return TemplateResponse("pages/homepage.html", {"request": request, "posts": posts})
 
 
+@requires("authenticated")
 async def upload_post(request: Request) -> RedirectResponse:
     form = await request.form()
     post = form["post_file"]

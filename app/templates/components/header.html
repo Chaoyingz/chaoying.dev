@@ -22,11 +22,12 @@
             </nav>
         </div>
         <div class="header-right">
+            {% if request.user.is_authenticated %}
             <form
                 action="{{ url_for('upload_post') }}"
                 method="post"
                 enctype="multipart/form-data"
-                class="header-right-upload"
+                class="header-right-upload header-right__item"
             >
                 <label v-show="!components.header.post" title="上传文章">
                     <input
@@ -52,10 +53,22 @@
                 </button>
             </form>
             <a
+                href="{{ url_for('logout') }}"
+                title="注销登录"
+                class="header-right__item"
+            >
+                <img
+                    src="{{ url_for('static', path='/svg/logout.svg') }}"
+                    alt="注销"
+                />
+            </a>
+            {% else %}
+            <a
                 class="header-right-login"
                 href="https://github.com/login/oauth/authorize?client_id=1fc7e429b2a950d11d4b"
                 >作者登录</a
             >
+            {% endif %}
         </div>
     </div>
 </header>

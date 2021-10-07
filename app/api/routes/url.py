@@ -11,5 +11,6 @@ routes = [
     ),
     Route("/posts/{slug:str}", endpoint=posts.get_post, name="get_post"),
     Route("/auth", endpoint=authentication.login, name="login"),
+    Route("/logout", endpoint=authentication.logout, name="logout"),
     Mount("/static", app=StaticFiles(directory=config.STATIC_DIR), name="static"),
 ]
