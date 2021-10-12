@@ -7,25 +7,26 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-starlette = "^0.15.0"
-uvicorn = {extras = ["standard"], version = "^0.15.0"}
+starlette = "^0.16.0"
 loguru = "^0.5.3"
-tortoise-orm = {extras = ["asyncpg"], version = "^0.17.7"}
-Jinja2 = "^3.0.1"
+Jinja2 = "^3.0.2"
 python-multipart = "^0.0.5"
-markdown2 = "^2.4.1"
 python-slugify = "^5.0.2"
 aiohttp = "^3.7.4"
 itsdangerous = "^2.0.1"
 PyJWT = "^2.2.0"
+Markdown = "^3.3.4"
+uvicorn = {extras = ["standard"], version = "^0.15.0"}
+tortoise-orm = {extras = ["asyncpg"], version = "^0.17.8"}
+markdown-captions = "^2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
 isort = "^5.9.3"
-flake8 = "^3.9.2"
+flake8 = "^4.0.1"
 mypy = "^0.910"
-ipython = "^7.27.0"
-coverage = "^5.5"
+ipython = "^7.28.0"
+coverage = "^6.0.2"
 black = "^21.9b0"
 pytest-asyncio = "^0.15.1"
 aioresponses = "^0.7.2"

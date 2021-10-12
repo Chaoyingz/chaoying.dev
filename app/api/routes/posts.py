@@ -1,4 +1,3 @@
-import markdown2
 from slugify import slugify
 from starlette.authentication import requires
 from starlette.requests import Request
@@ -7,6 +6,8 @@ from starlette.routing import Router
 
 from app.core.response import TemplateResponse
 from app.models.posts import Post
+from app.service.markdown import markdown2html
+from app.service.readtime import read_time
 
 router = Router()
 
@@ -22,9 +23,10 @@ async def upload_post(request: Request) -> RedirectResponse:
     post = form["post_file"]
     title, ext = post.filename.split(".")
     body_md = await post.read()
-    body_html = markdown2.markdown(body_md, extras=["fenced-code-blocks"])
+    body_html = markdown2html(body_md.decode("utf-8"))
     slug = slugify(title, max_length=64)
-    await Post.create(title=title, body=body_html, slug=slug)
+    read_time_text = read_time(body_html)
+    await Post.create(title=title, body=body_html, slug=slug, read_time=read_time_text)
     return RedirectResponse(url=request.url_for("homepage"), status_code=303)
 
 

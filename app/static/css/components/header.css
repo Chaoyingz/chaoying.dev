@@ -20,10 +20,16 @@ header {
     display: flex;
 }
 
-.header-left-logo {
-    font-family: "Kaushan Script", cursive;
-    font-size: 24px;
+.header-left-logo a {
+    display: block;
+    height: 36px;
     margin-right: 25px;
+}
+
+.header-left-logo img {
+    height: 34px;
+    width: 180px;
+    fill: #000000;
 }
 
 .header-left-nav {

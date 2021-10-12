@@ -8,12 +8,16 @@
 <div class="cy-container index">
     <div class="post">
         {% for post in posts %}
-        <section class="post-item">
+        <section class="post__item">
             <a href="{{ url_for('get_post', slug=post.slug) }}">
-                <h2 class="post-item-title">{{ post.title }}</h2>
-                <h3 class="post-item-desc"></h3>
+                <h3 class="post__item-title">{{ post.title }}</h3>
+                <!--                <h3 class="post__item-desc"></h3>-->
             </a>
-            <div class="date">{{ post.timestamp }}</div>
+            <div class="post__item-meta">
+                <span>{{ post.timestamp.strftime('%Y-%m-%d') }}</span>
+                <span> &#8226; </span>
+                <span>{{ post.read_time }}</span>
+            </div>
         </section>
         {% endfor %}
     </div>

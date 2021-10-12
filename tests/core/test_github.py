@@ -2,7 +2,7 @@ import pytest
 from aioresponses import aioresponses
 
 from app.core import config
-from app.core.github import (
+from app.service.github import (
     GITHUB_ACCESS_TOKEN_URL,
     GITHUB_USER_URL,
     get_github_access_token,

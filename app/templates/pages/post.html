@@ -9,13 +9,30 @@ post.timestamp.strftime('%Y年%m月%d日') }}{% endblock %} {% block style %}
     rel="stylesheet"
 />
 <link href="{{ url_for('static', path='/css/autumn.css') }}" rel="stylesheet" />
+<meta
+    name="google-signin-client_id"
+    content="983961231255-0hj3o04b036fpq10otskfaotovfsh6fr.apps.googleusercontent.com"
+/>
+<meta
+    name="google-signin-scope"
+    content="https://www.googleapis.com/auth/analytics.readonly"
+/>
 {% endblock %} {% block body %}
 <div class="cy-container post">
     <div class="post-title">
         <h1>{{ post.title }}</h1>
+    </div>
+    <div class="post-meta">
         <span class="post-date"
             >{{ post.timestamp.strftime('%Y年%m月%d日') }}</span
         >
+        <span>
+            <span> {{ post.read_time }} </span>
+            <!--            <span> &#8226; </span>-->
+            <!--            <span>-->
+            <!--                92,111 views-->
+            <!--            </span>-->
+        </span>
     </div>
     <main class="markdown-body">
         <artice> {{ post.body|safe }} </artice>

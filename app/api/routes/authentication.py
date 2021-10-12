@@ -5,7 +5,7 @@ from starlette.responses import RedirectResponse
 
 from app.core import config
 from app.core.authentication import generate_token
-from app.core.github import get_github_access_token, get_github_user
+from app.service.github import get_github_access_token, get_github_user
 
 
 async def login(request: Request) -> RedirectResponse:
