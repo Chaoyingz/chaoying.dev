@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.9"
-starlette = "^0.16.0"
+starlette = "^0.15.0"
 loguru = "^0.5.3"
 Jinja2 = "^3.0.2"
 python-multipart = "^0.0.5"
@@ -19,6 +19,7 @@ Markdown = "^3.3.4"
 uvicorn = {extras = ["standard"], version = "^0.15.0"}
 tortoise-orm = {extras = ["asyncpg"], version = "^0.17.8"}
 markdown-captions = "^2"
+aerich = "^0.5.8"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

@@ -1,0 +1,18 @@
+-- upgrade --
+CREATE TABLE IF NOT EXISTS "post" (
+    "id" SERIAL NOT NULL PRIMARY KEY,
+    "title" VARCHAR(128) NOT NULL UNIQUE,
+    "body" TEXT NOT NULL,
+    "slug" VARCHAR(64) NOT NULL,
+    "read_time" VARCHAR(64) NOT NULL,
+    "timestamp" TIMESTAMPTZ NOT NULL
+);
+CREATE TABLE IF NOT EXISTS "user" (
+    "id" SERIAL NOT NULL PRIMARY KEY
+);
+CREATE TABLE IF NOT EXISTS "aerich" (
+    "id" SERIAL NOT NULL PRIMARY KEY,
+    "version" VARCHAR(255) NOT NULL,
+    "app" VARCHAR(20) NOT NULL,
+    "content" JSONB NOT NULL
+);
