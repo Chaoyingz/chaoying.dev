@@ -5,7 +5,7 @@ header {
     padding: 20px 0;
     line-height: 34px;
     box-sizing: border-box;
-    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);
+    /*box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.05);*/
     font-size: 14px;
     color: rgba(41, 41, 41, 1);
     margin-bottom: 20px;

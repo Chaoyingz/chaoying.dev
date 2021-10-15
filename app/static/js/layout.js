@@ -1,17 +1,17 @@
-const app = {
-    components: {
-        VueUtterances,
-    },
+var app = new Vue({
+    el: "#app",
     delimiters: ["[[", "]]"],
-    data() {
-        return {
-            components: {
-                header: {
-                    post: "",
-                },
-            },
-        };
+    data: {
+        is_uploaded: "",
     },
-};
-
-Vue.createApp(app).mount("#app");
+    mounted() {
+        let utterances = document.createElement("script");
+        utterances.async = true;
+        utterances.setAttribute("src", "https://utteranc.es/client.js");
+        utterances.setAttribute("repo", "Chaoyingz/chaoying.dev");
+        utterances.setAttribute("issue-term", "title");
+        utterances.setAttribute("theme", "github-light");
+        utterances.setAttribute("crossorigin", "anonymous");
+        this.$refs["utterances"].appendChild(utterances);
+    },
+});

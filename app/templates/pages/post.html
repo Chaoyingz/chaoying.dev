@@ -37,10 +37,6 @@ post.timestamp.strftime('%Y年%m月%d日') }}{% endblock %} {% block style %}
     <main class="markdown-body">
         <artice> {{ post.body|safe }} </artice>
     </main>
-    <vue-utterances
-        repo="Chaoyingz/chaoying.dev"
-        issue-term="title"
-        theme="github-light"
-    />
+    <section ref="utterances"></section>
 </div>
 {% endblock %}

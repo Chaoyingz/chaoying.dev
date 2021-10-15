@@ -25,6 +25,16 @@ button {
     margin: auto;
 }
 
+.cy-container-sm {
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+}
+
+[v-cloak] {
+    display: none;
+}
+
 h1,
 .h1 {
     font-size: 2.25rem;

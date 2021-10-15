@@ -28,12 +28,13 @@
                 enctype="multipart/form-data"
                 class="header-right-upload header-right__item"
             >
-                <label v-show="!components.header.post" title="上传文章">
+                <label v-show="!is_uploaded" title="上传文章">
                     <input
                         type="file"
                         accept=".md"
                         name="post_file"
-                        v-model="components.header.post"
+                        v-model="is_uploaded"
+                        v-cloak
                     />
                     <img
                         src="{{ url_for('static', path='/svg/quill.svg') }}"
@@ -42,8 +43,9 @@
                 </label>
                 <button
                     type="submit"
-                    v-show="components.header.post"
+                    v-show="is_uploaded"
                     title="提交文章"
+                    v-cloak
                 >
                     <img
                         src="{{ url_for('static', path='/svg/refresh.svg') }}"
