@@ -22,14 +22,11 @@ services:
         labels:
             - "traefik.enable=true"
             - "traefik.http.routers.fastapi.rule=Host(`chaoying.dev`)"
-            - "traefik.http.routers.fastapi.tls=true"
-            - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
 
     traefik:
         image: traefik:v2.2
         ports:
             - 80:80
-            - 443:443
         volumes:
             - "/var/run/docker.sock:/var/run/docker.sock:ro"
             - "$PWD/traefik.toml:/etc/traefik/traefik.toml"
