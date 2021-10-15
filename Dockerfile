@@ -3,17 +3,17 @@ FROM python:3.9-alpine
 ENV PYTHONUNBUFFERED 1
 
 EXPOSE 8000
-WORKDIR /app
+WORKDIR /code
 
 RUN apk --update --no-cache add gcc musl-dev libffi-dev openssl-dev python3-dev build-base
 
+RUN pip install poetry --no-cache-dir
 COPY poetry.lock pyproject.toml ./
+RUN poetry config virtualenvs.create false \
+    && poetry config experimental.new-installer false \
+    && poetry install --no-dev --no-interaction --no-ansi
 
-RUN pip install poetry && \
-    poetry config virtualenvs.in-project true && \
-    poetry install --no-dev
-
-COPY . ./
+COPY ./app /code/app
 
 #CMD sleep infinity
 CMD poetry run aerich upgrade && \
