@@ -4,8 +4,6 @@ from pathlib import Path
 from starlette.config import Config
 from starlette.datastructures import Secret
 
-from app.core.templating import Jinja2Templates
-
 
 class AppConfig:
     BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -36,7 +34,6 @@ class AppConfig:
     APP_DIR = BASE_DIR / "app"
     STATIC_DIR = APP_DIR / "static"
     TEMPLATE_DIR = APP_DIR / "templates"
-    TEMPLATES = Jinja2Templates(directory=str(TEMPLATE_DIR))
 
     # logger
     LOGGING_LEVEL = logging.DEBUG

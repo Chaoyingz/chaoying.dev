@@ -70,3 +70,12 @@
 .markdown-body h3 a {
     text-decoration: none;
 }
+
+.vue-utterances {
+    margin-top: 4em;
+}
+
+.utterances {
+    width: 100%;
+    max-width: 992px;
+}

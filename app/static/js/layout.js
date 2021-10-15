@@ -1,11 +1,17 @@
-var app = new Vue({
-    el: "#app",
-    delimiters: ["[[", "]]"],
-    data: {
-        components: {
-            header: {
-                post: "",
-            },
-        },
+const app = {
+    components: {
+        VueUtterances,
     },
-});
+    delimiters: ["[[", "]]"],
+    data() {
+        return {
+            components: {
+                header: {
+                    post: "",
+                },
+            },
+        };
+    },
+};
+
+Vue.createApp(app).mount("#app");
