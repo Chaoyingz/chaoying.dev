@@ -1,24 +1,12 @@
 html {
     font-family: Tahoma, Arial, "PingFang SC", "Hiragino Sans GB",
         "Microsoft YaHei", sans-serif;
-}
-
-html {
-    overflow-y: scroll;
-}
-
-:root {
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-:root body {
-    position: absolute;
-}
-
 body {
-    width: 100vw;
-    overflow: hidden;
+    margin-right: calc(100% - 100vw);
 }
 
 h1,
