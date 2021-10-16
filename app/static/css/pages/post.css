@@ -1,22 +1,10 @@
-.post {
-    margin-top: 62px;
+.archive {
+    position: relative;
 }
 
-.post-title {
-    margin-bottom: 1.5rem;
-}
-
-.post-title h1 {
-    /*font-size: 2em;*/
-    font-weight: 700;
-    margin-bottom: 16px;
-}
-
-.post-meta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    color: rgba(117, 117, 117, 1);
+.markdown-body {
+    display: block;
+    box-sizing: border-box;
 }
 
 .markdown-body li a {
@@ -32,7 +20,6 @@
 
 .markdown-body p {
     line-height: 1.8;
-    color: rgba(41, 41, 41, 1);
 }
 
 .markdown-body ol,
@@ -72,7 +59,7 @@
 }
 
 .utterances {
-    margin-top: 4em;
-    width: 100%;
-    max-width: 992px;
+    width: calc(100% + 49px);
+    margin-top: 3em;
+    margin-left: -49px;
 }

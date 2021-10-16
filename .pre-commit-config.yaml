@@ -15,8 +15,12 @@ repos:
       rev: v2.2.1
       hooks:
           - id: prettier
-            exclude: "^docs/.*"
+            exclude: >
+                (?x)^(
+                    ^.+\.html$
+                )$
             args: ["--tab-width", "4"]
+
     - repo: https://github.com/psf/black
       rev: 19.3b0
       hooks:

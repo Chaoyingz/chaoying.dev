@@ -7,6 +7,7 @@ from app.api.routes.url import routes
 from app.core import config
 from app.core.events import create_start_app_handler
 from app.core.middleware import JWTAuthBackend
+from app.exceptions.page import exception_handlers
 
 
 def get_application() -> Starlette:
@@ -20,7 +21,12 @@ def get_application() -> Starlette:
         ),
     ]
 
-    application = Starlette(debug=config.DEBUG, routes=routes, middleware=middleware)
+    application = Starlette(
+        debug=config.DEBUG,
+        routes=routes,
+        middleware=middleware,
+        exception_handlers=exception_handlers,
+    )
     application.add_event_handler("startup", create_start_app_handler(application))
     application.add_event_handler("shutdown", create_start_app_handler(application))
     return application

@@ -1,0 +1,25 @@
+{% extends "./layout.html" %} {% set active_page = "Home" %} {% block title
+%}首页{% endblock %} {% block style %}
+<link
+        href="{{ url_for('static', path='/css/pages/index.css') }}"
+        rel="stylesheet"
+/>
+{% endblock %} {% block body %}
+<section class="archive">
+    {% for post in posts %}
+    <section class="archive__item">
+        <a href="{{ url_for('post-get', slug=post.slug) }}">
+            <h3 class="archive__item-title">{{ post.title }}</h3>
+            <p class="archive__item-desc">
+                {{ post.body | truncate(length=100) | striptags }}
+            </p>
+        </a>
+        <div class="archive__item-meta">
+            <span>{{ post.timestamp.strftime('%Y-%m-%d') }}</span>
+            <span> &#8226; </span>
+            <span>{{ post.read_time }}</span>
+        </div>
+    </section>
+    {% endfor %}
+</section>
+{% endblock %}

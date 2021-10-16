@@ -1,31 +1,18 @@
-.index {
-    display: flex;
+.archive__item {
+    border-bottom: 1px solid rgba(230, 230, 230, 1);
+    margin-bottom: 32px;
 }
 
-.post {
-    flex: 1 1 0;
-    margin-top: 22px;
+.archive__item-title {
+    color: rgba(41, 41, 41, 1);
+    margin-bottom: 0.7em;
 }
 
-.post__item {
-    margin-bottom: 2rem;
+.archive__item-desc {
+    max-height: 72px;
 }
 
-.post__item-title {
-    margin: 0.7rem 0;
-}
-
-.post__item-meta {
+.archive__item-meta {
+    padding: 5px 0px 12px;
     color: rgba(117, 117, 117, 1);
-}
-
-.split {
-    min-height: calc(100vh - 114px);
-    margin-right: 56px;
-    border-right: 1px solid rgba(230, 230, 230, 1);
-    padding-right: 56px;
-}
-
-.aside {
-    width: 336px;
 }

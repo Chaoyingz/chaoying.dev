@@ -1,0 +1,6 @@
+User-Agent: *
+
+Disallow: /login
+Disallow: /logout
+
+Sitemap: https://chaoying.dev/sitemap.xml

@@ -1,38 +1,6 @@
 html {
     font-family: Tahoma, Arial, "PingFang SC", "Hiragino Sans GB",
         "Microsoft YaHei", sans-serif;
-    color: rgba(8, 8, 8, 1);
-}
-
-a {
-    text-decoration: none;
-    color: rgba(8, 8, 8, 1);
-}
-
-a:hover {
-    color: rgba(41, 41, 41, 1);
-}
-
-button {
-    background: none;
-    border: none;
-    padding: 0;
-}
-
-.cy-container {
-    max-width: 992px;
-    width: 100%;
-    margin: auto;
-}
-
-.cy-container-sm {
-    max-width: 768px;
-    width: 100%;
-    margin: auto;
-}
-
-[v-cloak] {
-    display: none;
 }
 
 h1,
@@ -58,4 +26,51 @@ h4,
 .h4 {
     font-size: 1.25rem;
     line-height: 1.75rem;
+}
+
+a {
+    text-decoration: none;
+    color: rgba(41, 41, 41, 1);
+}
+
+button {
+    cursor: pointer;
+}
+
+#app {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1504px;
+}
+
+.content-wrapper {
+    flex: 1 1 auto;
+    border-left: 1px solid rgba(230, 230, 230, 1);
+    border-right: 1px solid rgba(230, 230, 230, 1);
+    box-sizing: border-box;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 692px;
+}
+
+html {
+    overflow-y: scroll;
+}
+
+:root {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+:root body {
+    position: absolute;
+}
+
+body {
+    width: 100vw;
+    overflow: hidden;
 }

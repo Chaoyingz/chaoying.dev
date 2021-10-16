@@ -1,5 +1,6 @@
 from slugify import slugify
 from starlette.authentication import requires
+from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import Router
@@ -12,9 +13,9 @@ from app.service.readtime import read_time
 router = Router()
 
 
-async def homepage(request: Request) -> Response:
+async def index(request: Request) -> Response:
     posts = await Post.all()
-    return TemplateResponse("pages/homepage.html", {"request": request, "posts": posts})
+    return TemplateResponse("pages/index.html", {"request": request, "posts": posts})
 
 
 @requires("authenticated")
@@ -27,9 +28,11 @@ async def upload_post(request: Request) -> RedirectResponse:
     slug = slugify(title, max_length=64)
     read_time_text = read_time(body_html)
     await Post.create(title=title, body=body_html, slug=slug, read_time=read_time_text)
-    return RedirectResponse(url=request.url_for("homepage"), status_code=303)
+    return RedirectResponse(url=request.url_for("index"), status_code=303)
 
 
 async def get_post(request: Request) -> Response:
     post = await Post.get_or_none(slug=request.path_params["slug"])
+    if not post:
+        raise HTTPException(status_code=404)
     return TemplateResponse("pages/post.html", {"request": request, "post": post})

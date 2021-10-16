@@ -1,76 +1,66 @@
-{% block style %}
-<link
-    href="{{ url_for('static', path='/css/components/header.css') }}"
-    rel="stylesheet"
-/>
-{% endblock %} {% block header %}
+{% set navigation_bar = [ (url_for("index"), 'Home'), ("/about", 'About'),
+("/archives", 'Archives'), ("/projects", 'Projects'), ] %} {% set active_page =
+active_page|default('') %}
+
 <header>
-    <div class="cy-container header">
-        <div class="header-left">
-            <div class="header-left-logo">
-                <a href="/">
-                    <img
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <img
                         src="{{ url_for('static', path='/svg/logo.svg') }}"
-                        alt="上传文章"
-                    />
-                </a>
-            </div>
-            <nav class="header-left-nav">
-                <!--                <a href="">所有文章</a>-->
-                <!--                <a href="">关于我</a>-->
-            </nav>
+                        alt="Chaoying's Blog"
+                />
+            </a>
         </div>
-        <div class="header-right">
-            {% if request.user.is_authenticated %}
+
+        <div class="menu">
+            {% for href, caption in navigation_bar %}
+            <a href="{{ href|e }}" {% if caption== active_page %} class="menu__item active" {% endif %}
+               class="menu__item">{{ caption }}</a>
+
+            {% endfor %} {% if request.user.is_authenticated %}
             <form
-                action="{{ url_for('upload_post') }}"
-                method="post"
-                enctype="multipart/form-data"
-                class="header-right-upload header-right__item"
+                    action="{{ url_for('post-upload') }}"
+                    method="post"
+                    enctype="multipart/form-data"
             >
-                <label v-show="!is_uploaded" title="上传文章">
+                <label
+                        title="上传文章"
+                        id="upload-archive-btn"
+                        class="menu__item write"
+                >
                     <input
-                        type="file"
-                        accept=".md"
-                        name="post_file"
-                        v-model="is_uploaded"
-                        v-cloak
+                            onchange="handleArchiveUpload()"
+                            type="file"
+                            accept=".md"
+                            name="post_file"
                     />
-                    <img
-                        src="{{ url_for('static', path='/svg/quill.svg') }}"
-                        alt="上传文章"
-                    />
+                    Write
                 </label>
                 <button
-                    type="submit"
-                    v-show="is_uploaded"
-                    title="提交文章"
-                    v-cloak
+                        id="submit-btn"
+                        type="submit"
+                        title="提交文章"
+                        class="menu__item"
                 >
-                    <img
-                        src="{{ url_for('static', path='/svg/refresh.svg') }}"
-                        alt="提交文章"
-                    />
+                    Submit
                 </button>
             </form>
-            <a
-                href="{{ url_for('logout') }}"
-                title="注销登录"
-                class="header-right__item"
-            >
-                <img
-                    src="{{ url_for('static', path='/svg/logout.svg') }}"
-                    alt="注销"
-                />
+            {% endif %}
+        </div>
+
+        <div class="user">
+            {% if request.user.is_authenticated %}
+            <a href="{{ url_for('logout') }}">
+                <span>Sign out</span>
             </a>
             {% else %}
             <a
-                class="header-right-login"
-                href="https://github.com/login/oauth/authorize?client_id={{ GITHUB_CLIENT_ID }}"
-                >作者登录</a
+                    href="https://github.com/login/oauth/authorize?client_id={{ GITHUB_CLIENT_ID }}"
             >
+                <span>Start Writing</span>
+            </a>
             {% endif %}
         </div>
-    </div>
+    </nav>
 </header>
-{% endblock %} {% block script %} {% endblock %}

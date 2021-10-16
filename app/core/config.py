@@ -43,6 +43,8 @@ class AppConfig:
     GITHUB_SECRET: Secret = env("GITHUB_SECRET", cast=Secret)
     GITHUB_USER: Secret = env("GITHUB_USER", cast=Secret)
 
+    DOMAIN = env("DOMAIN")
+
 
 class DevelopmentConfig(AppConfig):
     DB_CONNECTION = AppConfig.DEV_DB_CONNECTION

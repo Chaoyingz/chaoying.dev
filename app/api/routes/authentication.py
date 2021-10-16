@@ -29,10 +29,10 @@ async def login(request: Request) -> RedirectResponse:
 
     token = generate_token(user)
     request.session[config.TOKEN_KEY] = token
-    return RedirectResponse(url=request.url_for("homepage"), status_code=303)
+    return RedirectResponse(url=request.url_for("index"), status_code=303)
 
 
 @requires("authenticated")
 async def logout(request: Request) -> RedirectResponse:
     request.session.pop(config.TOKEN_KEY)
-    return RedirectResponse(url=request.url_for("homepage"), status_code=303)
+    return RedirectResponse(url=request.url_for("index"), status_code=303)
