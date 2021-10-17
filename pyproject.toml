@@ -22,6 +22,7 @@ markdown-captions = "^2"
 aerich = "^0.5.8"
 asgi-sitemaps = "^0.3.2"
 pangu = "^4.0.6"
+markdown-link-attr-modifier = "^0.2.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

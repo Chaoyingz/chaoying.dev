@@ -428,6 +428,17 @@ python-versions = "*"
 Markdown = ">=3.0.1"
 
 [[package]]
+name = "markdown-link-attr-modifier"
+version = "0.2.0"
+description = "A Python-Markdown extension to modify attributes of <a> tag links"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+markdown = ">=3"
+
+[[package]]
 name = "markupsafe"
 version = "2.0.1"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -940,7 +951,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "d5b7cb0ef028a7b2c4e45ebf48fc138309db11717cedd490016d52fa6a3e5f94"
+content-hash = "23f117627745d146fe0d3fd1d12b819754f7b7edc7a36090da89b5c6bd875223"
 
 [metadata.files]
 aerich = [
@@ -1171,6 +1182,10 @@ markdown = [
 markdown-captions = [
     {file = "markdown-captions-2.tar.gz", hash = "sha256:f653955d4ca22cbe84c39dc19693317ec2ce7a0af03cf5d44b349be7baf0dc97"},
     {file = "markdown_captions-2-py3-none-any.whl", hash = "sha256:0820b7ca1e7ea9041a0462584b4211d8023e6849709395fa34bfcd57c01bb49a"},
+]
+markdown-link-attr-modifier = [
+    {file = "markdown_link_attr_modifier-0.2.0-py3-none-any.whl", hash = "sha256:01b07d7a466ff7c721f97d66b08ec60a54e8d46c287695b649507ae57a42ff4b"},
+    {file = "markdown_link_attr_modifier-0.2.0.tar.gz", hash = "sha256:94eacc4b7cfda9b5c883fb8c9f218b0602889c64d12977b31994d10b7b720a59"},
 ]
 markupsafe = [
     {file = "MarkupSafe-2.0.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:f9081981fe268bd86831e5c75f7de206ef275defcb82bc70740ae6dc507aee51"},
