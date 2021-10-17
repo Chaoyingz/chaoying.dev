@@ -499,6 +499,14 @@ python-versions = ">=3.6"
 pyparsing = ">=2.0.2"
 
 [[package]]
+name = "pangu"
+version = "4.0.6.1"
+description = "Paranoid text spacing for good readability, to automatically insert whitespace between CJK (Chinese, Japanese, Korean) and half-width characters (alphabetical letters, numerical digits and symbols)."
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "parso"
 version = "0.8.2"
 description = "A Python Parser"
@@ -932,7 +940,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "865d841672de8aa40620d53e054563698c4cc307f6a9f2ce18853efb8ec4f164"
+content-hash = "d5b7cb0ef028a7b2c4e45ebf48fc138309db11717cedd490016d52fa6a3e5f94"
 
 [metadata.files]
 aerich = [
@@ -1314,6 +1322,10 @@ mypy-extensions = [
 packaging = [
     {file = "packaging-21.0-py3-none-any.whl", hash = "sha256:c86254f9220d55e31cc94d69bade760f0847da8000def4dfe1c6b872fd14ff14"},
     {file = "packaging-21.0.tar.gz", hash = "sha256:7dc96269f53a4ccec5c0670940a4281106dd0bb343f47b7471f779df49c2fbe7"},
+]
+pangu = [
+    {file = "pangu-4.0.6.1-py3-none-any.whl", hash = "sha256:5023dced34b48da7ec61a2847efcbb8cf4fb748f8e589e1e7dfb008b7ad00206"},
+    {file = "pangu-4.0.6.1.tar.gz", hash = "sha256:f799d127709fe5ecff5d476945ac63d4be758b7bda02efb95715f1dc24472a2f"},
 ]
 parso = [
     {file = "parso-0.8.2-py2.py3-none-any.whl", hash = "sha256:a8c4922db71e4fdb90e0d0bc6e50f9b273d3397925e5e60a717e719201778d22"},

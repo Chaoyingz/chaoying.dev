@@ -1,5 +1,11 @@
-.archive {
+.post {
     position: relative;
+    color: #333333;
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
 }
 
 .markdown-body {
@@ -7,15 +13,51 @@
     box-sizing: border-box;
 }
 
-.markdown-body li a {
-    color: #1d4ed8;
-    text-decoration-color: #1d4ed8;
+.markdown-body a {
+    color: #006699;
+    text-decoration-color: #006699;
 }
 
+.markdown-body a:hover {
+    text-decoration: none;
+}
+
+.markdown-body .codehilite {
+    margin: 1em 0;
+}
+
+.markdown-body p a:hover,
 .markdown-body li a:hover {
-    color: #3b82f6;
-    text-decoration-color: #3b82f6;
     font-weight: normal;
+}
+
+.markdown-body strong a:hover {
+    font-weight: 700;
+}
+
+.markdown-body h1 a,
+.markdown-body h2 a,
+.markdown-body h3 a,
+.markdown-body h4 a {
+    color: #333333;
+    text-decoration: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body .h2 {
+    margin-bottom: -0.37em;
+}
+
+.markdown-body h2,
+.markdown-body .h2 {
+    margin-top: 1.32em;
+}
+
+.markdown-body h3 {
+    margin-top: 1.12em;
 }
 
 .markdown-body p {
@@ -33,14 +75,8 @@
     line-height: 1.8;
 }
 
-.markdown-body h2,
-.markdown-body .h2 {
-    margin-top: 1.32em;
-}
-
-.markdown-body .h2 {
-    margin: 0;
-    /*margin-top: 0.7em;*/
+.markdown-body .toc ul {
+    margin-top: 0;
 }
 
 .markdown-body .toc li {
@@ -50,12 +86,18 @@
 
 .markdown-body figcaption {
     text-align: center;
-    color: rgba(117, 117, 117, 1);
+    color: #666666;
 }
 
-.markdown-body h2 a,
-.markdown-body h3 a {
-    text-decoration: none;
+.markdown-body blockquote {
+    background-color: #f4f4f4;
+    padding: 12px;
+    margin: 0;
+    border-left: 6px solid #006699;
+}
+
+.markdown-body blockquote p {
+    margin: 0;
 }
 
 .utterances {

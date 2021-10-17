@@ -10,6 +10,8 @@
 
 .archive__item-desc {
     max-height: 72px;
+    margin-top: 0;
+    line-height: 24px;
 }
 
 .archive__item-meta {

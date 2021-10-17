@@ -21,6 +21,7 @@ tortoise-orm = {extras = ["asyncpg"], version = "^0.17.8"}
 markdown-captions = "^2"
 aerich = "^0.5.8"
 asgi-sitemaps = "^0.3.2"
+pangu = "^4.0.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

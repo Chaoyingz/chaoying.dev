@@ -1,3 +1,4 @@
+import pangu
 from slugify import slugify
 from starlette.authentication import requires
 from starlette.exceptions import HTTPException
@@ -14,7 +15,7 @@ router = Router()
 
 
 async def index(request: Request) -> Response:
-    posts = await Post.all()
+    posts = await Post.all().order_by("-timestamp")
     return TemplateResponse("pages/index.html", {"request": request, "posts": posts})
 
 
@@ -25,10 +26,21 @@ async def upload_post(request: Request) -> RedirectResponse:
     title, ext = post.filename.split(".")
     body_md = await post.read()
     body_html = markdown2html(body_md.decode("utf-8"))
-    slug = slugify(title, max_length=64)
-    read_time_text = read_time(body_html)
-    await Post.create(title=title, body=body_html, slug=slug, read_time=read_time_text)
-    return RedirectResponse(url=request.url_for("index"), status_code=303)
+    body_html_space = pangu.spacing_text(body_html)
+
+    post = await Post.get_or_none(title=title)
+    if post:
+        post.body = body_html_space
+        await post.save()
+    else:
+        read_time_text = read_time(body_html)
+        slug = slugify(title, max_length=64)
+        post = await Post.create(
+            title=title, body=body_html_space, slug=slug, read_time=read_time_text
+        )
+    return RedirectResponse(
+        url=request.url_for("post-get", slug=post.slug), status_code=303
+    )
 
 
 async def get_post(request: Request) -> Response:
