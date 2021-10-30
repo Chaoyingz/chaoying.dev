@@ -1,11 +1,7 @@
+本文翻译自[**David Beazley**](https://dabeaz.com/about.html)在 PyCon'08 发表的[《Generator Tricks for Systems Programmers》](https://dabeaz.com/generators/index.html)一文。
+{: #source }
+
 Python 生成器很酷，但是它是什么？它可以做什么？这就是本文章要探讨的内容。我们的目标是从**[系统程序设计](https://en.wikipedia.org/wiki/Systems_programming)**的角度来探索生成器的实际应用，其中包括文件、文件系统、网络和线程等。
-
-> 本文翻译自[**David Beazley**](https://dabeaz.com/about.html)在 PyCon'08 发表的[Generator Tricks for Systems Programmers](https://dabeaz.com/generators/index.html)一文。
-
-目录
-{: .h2}
-
-[TOC]
 
 ## 有趣的文件和目录
 

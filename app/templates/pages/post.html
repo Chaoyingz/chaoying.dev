@@ -49,12 +49,14 @@
 </div>
 {% endblock %}
 {% block aside %}
-<section class="copyright">
+{% if post.source %}
+<section class="source">
     <h2>Source</h2>
     <p>
         {{ post.source | safe }}
     </p>
 </section>
+{% endif %}
 <section class="toc-container">
     <h2>Table of Contents</h2>
     {{ post.toc|safe }}
