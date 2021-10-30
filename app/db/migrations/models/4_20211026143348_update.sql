@@ -1,0 +1,6 @@
+-- upgrade --
+ALTER TABLE "post" ADD "updated_at" TIMESTAMPTZ NOT NULL  DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE "post" ALTER COLUMN "timestamp" TYPE TIMESTAMPTZ USING "timestamp"::TIMESTAMPTZ;
+-- downgrade --
+ALTER TABLE "post" DROP COLUMN "updated_at";
+ALTER TABLE "post" ALTER COLUMN "timestamp" TYPE TIMESTAMPTZ USING "timestamp"::TIMESTAMPTZ;

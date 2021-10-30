@@ -1,10 +1,10 @@
 .archive__item {
-    border-bottom: 1px solid rgba(230, 230, 230, 1);
+    border-bottom: 1px solid #e6e6e6;
     margin-bottom: 32px;
 }
 
 .archive__item-title {
-    color: rgba(41, 41, 41, 1);
+    color: #333333;
     margin-bottom: 0.7em;
 }
 
@@ -16,5 +16,5 @@
 
 .archive__item-meta {
     padding: 5px 0px 12px;
-    color: rgba(117, 117, 117, 1);
+    color: #666666;
 }

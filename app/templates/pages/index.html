@@ -11,7 +11,7 @@
         <a href="{{ url_for('post-get', slug=post.slug) }}">
             <h3 class="archive__item-title">{{ post.title }}</h3>
             <p class="archive__item-desc">
-                {{ post.body | striptags | truncate(128) }}
+                {{ post.description }}
             </p>
         </a>
         <div class="archive__item-meta">

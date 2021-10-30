@@ -19,24 +19,22 @@ nav {
 
 .logo img {
     height: 34px;
-}
-
-.menu {
+    width: auto;
 }
 
 .menu__item {
     display: block;
     padding-left: 16px;
     transition: all 0.2s ease-in-out;
-    line-height: 28px;
-    margin-bottom: 16px;
+    line-height: 26px;
+    margin-bottom: 18px;
     border-left: 3px solid #fff;
     font-size: 1em;
 }
 
 .menu__item:hover,
 .menu__item.active {
-    border-left: 3px solid #6699cc;
+    border-left: 3px solid #006bb3;
 }
 
 .menu__item.active {
@@ -45,7 +43,7 @@ nav {
 
 .menu__item.write {
     position: relative;
-    color: #6699cc;
+    color: #006bb3;
 }
 
 button.menu__item {
@@ -112,7 +110,7 @@ label.menu__item.write {
     justify-content: center;
     box-sizing: border-box;
     height: 100%;
-    color: #6699cc;
+    color: #006bb3;
     font-weight: 700;
     background-color: #fff;
     text-align: center;

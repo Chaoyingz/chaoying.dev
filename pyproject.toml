@@ -24,6 +24,7 @@ asgi-sitemaps = "^0.3.2"
 pangu = "^4.0.6"
 markdown-link-attr-modifier = "^0.2.0"
 Pygments = "^2.10.0"
+beautifulsoup4 = "^4.10.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

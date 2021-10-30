@@ -1,10 +1,14 @@
+{% set navigation_bar = [ (url_for("index"), 'Home'), ("/about", 'About'),
+("/archives", 'Archives'), ("/projects", 'Projects'), ] %} {% set active_page =
+active_page|default('') %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta
             name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>{% block title %}{% endblock %} | Chaoying.dev</title>
@@ -41,16 +45,81 @@
 
         gtag("config", "G-1BNH9KXK4F");
     </script>
-    <meta name="baidu-site-verification" content="code-eLpMAh8kU2" />
+    <meta name="baidu-site-verification" content="code-eLpMAh8kU2"/>
+    {% block desc %}{% endblock %}
 </head>
 <body>
 <div id="app">
-    {% include "./components/header.html" %}
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="/">
+                    <img
+                            src="{{ url_for('static', path='/svg/logo.svg') }}"
+                            alt="Chaoying's Blog"
+                    />
+                </a>
+            </div>
+
+            <div class="menu">
+                {% for href, caption in navigation_bar %}
+                <a href="{{ href|e }}" {% if caption== active_page %} class="menu__item active" {% endif %}
+                   class="menu__item">{{ caption }}</a>
+
+                {% endfor %} {% if request.user.is_authenticated %}
+                <form
+                        action="{{ url_for('post-upload') }}"
+                        method="post"
+                        enctype="multipart/form-data"
+                >
+                    <label
+                            title="上传文章"
+                            id="upload-archive-btn"
+                            class="menu__item write"
+                    >
+                        <input
+                                onchange="handleArchiveUpload()"
+                                type="file"
+                                accept=".md"
+                                name="post_file"
+                        />
+                        Write
+                    </label>
+                    <button
+                            id="submit-btn"
+                            type="submit"
+                            title="提交文章"
+                            class="menu__item"
+                    >
+                        Submit
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+
+            <div class="user">
+                {% if request.user.is_authenticated %}
+                <a href="{{ url_for('logout') }}">
+                    <span>Sign out</span>
+                </a>
+                {% else %}
+                <a
+                        href="https://github.com/login/oauth/authorize?client_id={{ GITHUB_CLIENT_ID }}"
+                >
+                    <span>Start Writing</span>
+                </a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
     <div class="content-wrapper">
         <main>{% block body %}{% endblock %}</main>
     </div>
-    {% include "./components/aside.html" %}
+    <aside>
+    {% block aside %}{% endblock %}
+    </aside>
 </div>
 <script src="{{ url_for('static', path='/js/layout.js') }}"></script>
+{% block script %}{% endblock %}
 </body>
 </html>

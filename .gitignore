@@ -138,5 +138,4 @@ dmypy.json
 .DS_Store
 
 # localfile
-archives
 postgres-data

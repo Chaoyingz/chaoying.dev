@@ -1,5 +1,11 @@
-{% extends "./layout.html" %} {% block title %}{{ post.title }} | {{
-post.timestamp.strftime('%Y年%m月%d日') }}{% endblock %} {% block style %}
+{% extends "./layout.html" %}
+{% block title %}
+{{ post.title }} | {{post.timestamp.strftime('%Y年%m月%d日') }}
+{% endblock %}
+{% block desc %}
+<meta name="description" content="{{ post.description }}">
+{% endblock %}
+{% block style %}
 <link
         href="{{ url_for('static', path='/css/markdown.css') }}"
         rel="stylesheet"
@@ -18,7 +24,7 @@ post.timestamp.strftime('%Y年%m月%d日') }}{% endblock %} {% block style %}
         content="https://www.googleapis.com/auth/analytics.readonly"
 />
 {% endblock %} {% block body %}
-<div class="post">
+<div class="post" id="post">
     <div class="post-title">
         <h1>{{ post.title }}</h1>
     </div>
@@ -30,7 +36,7 @@ post.timestamp.strftime('%Y年%m月%d日') }}{% endblock %} {% block style %}
             <span> {{ post.read_time }} </span>
         </span>
     </div>
-    <artice class="markdown-body"> {{ post.body|safe }}</artice>
+    <artice class="markdown-body"> {{ post.body | safe }}</artice>
 
     <script
             src="https://utteranc.es/client.js"
@@ -41,4 +47,19 @@ post.timestamp.strftime('%Y年%m月%d日') }}{% endblock %} {% block style %}
             async
     ></script>
 </div>
+{% endblock %}
+{% block aside %}
+<section class="copyright">
+    <h2>Source</h2>
+    <p>
+        {{ post.source | safe }}
+    </p>
+</section>
+<section class="toc-container">
+    <h2>Table of Contents</h2>
+    {{ post.toc|safe }}
+</section>
+{% endblock %}
+{% block script %}
+<script src="{{ url_for('static', path='/js/post.js') }}"></script>
 {% endblock %}

@@ -1,4 +1,67 @@
 aside {
     min-height: 100vh;
     width: 394px;
+    padding: 40px;
+    box-sizing: border-box;
 }
+
+aside h2 {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    margin: 0 0 16px;
+}
+
+aside section {
+    margin-bottom: 40px;
+}
+
+.copyright {
+    line-height: 22px;
+}
+
+.toc-container {
+    position: sticky;
+    top: 40px;
+}
+
+.toc li {
+    list-style: none;
+}
+
+.toc ul {
+    margin: 0;
+    padding: 0;
+}
+
+.toc li > ul {
+    padding-left: 16px;
+}
+
+.toc ul li {
+    margin-top: 0.625em;
+}
+
+.toc ul li.is-active-li > a {
+    color: #006bb3;
+}
+
+.toc > ul > li > ul {
+    overflow: hidden;
+    max-height: 0;
+}
+
+.toc > ul > li.is-collapsible > ul {
+    max-height: 1000px;
+    transition: max-height 1.5s ease;
+}
+
+/*.toc ul a:before {*/
+/*    position: absolute;*/
+/*    background-color: #EEE;*/
+/*    content: ' ';*/
+/*    display: inline-block;*/
+/*    height: inherit;*/
+/*    right: 0;*/
+/*    width: 3px;*/
+/*}*/

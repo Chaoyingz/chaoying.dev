@@ -36,7 +36,7 @@ h4,
 
 a {
     text-decoration: none;
-    color: rgba(41, 41, 41, 1);
+    color: #333333;
 }
 
 button {
@@ -53,8 +53,8 @@ button {
 
 .content-wrapper {
     flex: 1 1 auto;
-    border-left: 1px solid rgba(230, 230, 230, 1);
-    border-right: 1px solid rgba(230, 230, 230, 1);
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
     box-sizing: border-box;
     padding-top: 40px;
 }
