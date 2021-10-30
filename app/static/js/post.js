@@ -1,5 +1,5 @@
 // 文章导航
-window.addEventListener("DOMContentLoaded", () => {
+if (document.readyState !== "interactive") {
     const headerSelector = "h2[id], h3[id]";
     const headingsArray = document.querySelectorAll(headerSelector);
     const some = [].some;
@@ -49,4 +49,4 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     document.addEventListener("scroll", scrollListener, false);
-});
+}
