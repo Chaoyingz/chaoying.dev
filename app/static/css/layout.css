@@ -63,3 +63,9 @@ main {
     margin: 0 auto;
     max-width: 692px;
 }
+
+@media only screen and (max-width: 1400px) {
+    main {
+        margin: 0 32px;
+    }
+}
