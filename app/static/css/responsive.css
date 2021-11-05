@@ -1,0 +1,62 @@
+@media only screen and (max-width: 1674px) {
+    aside {
+        width: 224px;
+    }
+
+    .post-source {
+        display: block;
+    }
+
+    section.source {
+        display: none;
+    }
+
+    #app {
+        box-sizing: border-box;
+        padding: 0 24px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    main {
+        padding: 0 24px;
+    }
+
+    header.lg {
+        display: none;
+    }
+
+    header.md {
+        display: block;
+    }
+
+    aside {
+        display: none;
+    }
+
+    .content-wrapper {
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .utterances {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .archive__item-desc {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    #app {
+        padding: 0;
+    }
+
+    .archive__item-title {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}

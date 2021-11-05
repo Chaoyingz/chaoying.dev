@@ -32,10 +32,7 @@ if (document.readyState !== "interactive") {
         document
             .querySelector(linkSelector)
             .parentElement.classList.add("is-active-li");
-        console.log(topHeader.nodeName);
-        console.log(topHeader.nodeName === "H2");
         if (topHeader.nodeName === "H2") {
-            console.log();
             document
                 .querySelector(linkSelector)
                 .parentElement.classList.add("is-collapsible");

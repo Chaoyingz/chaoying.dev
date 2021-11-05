@@ -1,7 +1,22 @@
-header {
+header.lg {
     flex: 0 1 auto;
     width: 224px;
     min-height: 100vh;
+}
+
+header.md {
+    display: none;
+    height: 56px;
+    padding: 0 24px;
+    box-shadow: 0px -2px 10px rgb(0 0 0 / 15%);
+}
+
+header.md .logo {
+    padding: 16px 0;
+}
+
+header.md .logo img {
+    height: 24px;
 }
 
 nav {

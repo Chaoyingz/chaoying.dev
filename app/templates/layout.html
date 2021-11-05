@@ -29,6 +29,10 @@ active_page|default('') %}
             rel="stylesheet"
     />
     {% block style %}{% endblock %}
+    <link
+        href="{{ url_for('static', path='/css/responsive.css') }}"
+        rel="stylesheet"
+    />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
             async
@@ -49,8 +53,18 @@ active_page|default('') %}
     {% block desc %}{% endblock %}
 </head>
 <body>
+<header class="md">
+    <div class="logo">
+        <a href="/">
+            <img
+                    src="{{ url_for('static', path='/svg/logo.svg') }}"
+                    alt="Chaoying's Blog"
+            />
+        </a>
+    </div>
+</header>
 <div id="app">
-    <header>
+    <header class="lg">
         <nav>
             <div class="logo">
                 <a href="/">

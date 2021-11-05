@@ -9,6 +9,10 @@ body {
     margin-right: calc(100% - 100vw);
 }
 
+pre {
+    white-space: pre-wrap;
+}
+
 h1,
 .h1 {
     font-size: 2.25rem;
@@ -62,10 +66,4 @@ button {
 main {
     margin: 0 auto;
     max-width: 692px;
-}
-
-@media only screen and (max-width: 1400px) {
-    main {
-        margin: 0 32px;
-    }
 }

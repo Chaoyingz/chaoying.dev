@@ -36,6 +36,9 @@
             <span> {{ post.read_time }} </span>
         </span>
     </div>
+    <section class="post-source">
+        {{ post.source | safe }}
+    </section>
     <artice class="markdown-body"> {{ post.body | safe }}</artice>
 
     <script
