@@ -53,6 +53,7 @@
 @media only screen and (max-width: 600px) {
     #app {
         padding: 0;
+        display: block;
     }
 
     .archive__item-title {
