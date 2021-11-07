@@ -60,9 +60,7 @@ async def create_post(request: Request) -> RedirectResponse:
     slug = slugify(title, max_length=64)
     read_time_text = read_time(body_html)
     topics = await Topic.all()
-    for topic in topics:
-        jieba.add_word(topic.name)
-    seg = jieba.cut(soup.text)
+    seg = list(jieba.cut(soup.text))
     related_topics = [topic for topic in topics if topic.name in seg]
     post, _ = await Post.update_or_create(
         title=title,
