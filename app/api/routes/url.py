@@ -11,6 +11,12 @@ routes = [
     Route(
         "/topics/", endpoint=posts.create_topic, methods=["POST"], name="topic-create"
     ),
+    Route(
+        "/topics/{topic:str}",
+        endpoint=posts.delete_topic,
+        methods=["GET"],
+        name="topic-delete",
+    ),
     Route("/auth", endpoint=authentication.login, name="login"),
     Route("/logout", endpoint=authentication.logout, name="logout"),
     Mount("/static", app=StaticFiles(directory=config.STATIC_DIR), name="static"),

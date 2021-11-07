@@ -33,18 +33,22 @@
     margin-bottom: 10px;
 }
 
-.topic__item a {
-    display: block;
+.topic__item {
+    display: flex;
     margin-right: 8px;
-    padding: 8px 16px;
     background-color: #f2f2f2;
     border-radius: 100px;
     font-size: 14px;
     line-height: 20px;
 }
 
-.topic__item a:hover {
+.topic__item:hover {
     background-color: #e6e6e6;
+}
+
+.topic__item a:first-child {
+    display: block;
+    padding: 8px 16px;
 }
 
 .topic form {
@@ -58,4 +62,13 @@
     padding-left: 16px;
     box-sizing: border-box;
     border: 1px solid #b4b4b4;
+}
+
+.topic__item-delete {
+    display: block;
+    padding: 8px 0;
+    padding-right: 8px;
+    margin-left: -8px;
+    font-size: 16px;
+    line-height: 20px;
 }

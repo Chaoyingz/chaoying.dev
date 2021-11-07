@@ -36,7 +36,16 @@
   <div class="topic-content">
     {% for topic in topics %}
     <div class="topic__item">
-      <a href="{{ url_for('index') }}?topic={{topic.name}}">{{ topic.name }}</a>
+      <a href="{{ url_for('index') }}?topic={{topic.name}}">
+        {{ topic.name }}
+      </a>
+      {% if request.user.is_authenticated %}
+      <a
+        class="topic__item-delete"
+        href="{{ url_for('topic-delete', topic=topic.name) }}"
+        >⌦</a
+      >
+      {% endif %}
     </div>
     {% endfor %}
   </div>

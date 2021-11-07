@@ -60,7 +60,7 @@ async def create_post(request: Request) -> RedirectResponse:
     slug = slugify(title, max_length=64)
     read_time_text = read_time(body_html)
     topics = await Topic.all()
-    seg = jieba.cut(body_html_pangu)
+    seg = jieba.cut(soup.text)
     related_topics = [topic for topic in topics if topic.name in seg]
     post, _ = await Post.update_or_create(
         title=title,
@@ -92,4 +92,10 @@ async def create_topic(request: Request) -> RedirectResponse:
         await Topic.create(name=topic.capitalize())
     except IntegrityError:
         ...
+    return RedirectResponse(url=request.url_for("index"), status_code=303)
+
+
+@requires("authenticated")
+async def delete_topic(request: Request) -> RedirectResponse:
+    await Topic.filter(name=request.path_params["topic"]).delete()
     return RedirectResponse(url=request.url_for("index"), status_code=303)
