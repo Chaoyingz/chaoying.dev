@@ -60,6 +60,8 @@ async def create_post(request: Request) -> RedirectResponse:
     slug = slugify(title, max_length=64)
     read_time_text = read_time(body_html)
     topics = await Topic.all()
+    for topic in topics:
+        jieba.add_word(topic.name)
     seg = list(jieba.cut(soup.text))
     related_topics = [topic for topic in topics if topic.name in seg]
     post, _ = await Post.update_or_create(
@@ -89,11 +91,20 @@ async def get_post(request: Request) -> Response:
 @requires("authenticated")
 async def create_topic(request: Request) -> RedirectResponse:
     form = await request.form()
-    topic = form["topic"]
+    topic_name = form["topic"]
     try:
-        await Topic.create(name=topic.capitalize())
+        topic = await Topic.create(name=topic_name.capitalize())
     except IntegrityError:
         ...
+    else:
+        posts = await Post.all()
+        jieba.add_word(topic.name)
+        for post in posts:
+            soup = BeautifulSoup(post.body, "html.parser")
+            seg = list(jieba.cut(soup.text))
+            print(topic.name in seg)
+            if topic.name in seg:
+                await post.topics.add(topic)
     return RedirectResponse(url=request.url_for("index"), status_code=303)
 
 
