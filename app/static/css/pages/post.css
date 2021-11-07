@@ -123,3 +123,18 @@
     margin-top: 3em;
     margin-left: -49px;
 }
+
+.topic {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-top: 3em;
+    border-top: 1px solid #e6e6e6;
+    padding-top: 2em;
+    line-height: 36px;
+}
+
+.topic p {
+    margin: 0;
+    margin-right: 16px;
+}

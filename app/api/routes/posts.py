@@ -78,7 +78,9 @@ async def create_post(request: Request) -> RedirectResponse:
 
 
 async def get_post(request: Request) -> Response:
-    post = await Post.get_or_none(slug=request.path_params["slug"])
+    post = await Post.get_or_none(slug=request.path_params["slug"]).prefetch_related(
+        "topics"
+    )
     if not post:
         raise HTTPException(status_code=404)
     return TemplateResponse("pages/post.html", {"request": request, "post": post})

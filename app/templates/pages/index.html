@@ -36,7 +36,10 @@
   <div class="topic-content">
     {% for topic in topics %}
     <div class="topic__item">
-      <a href="{{ url_for('index') }}?topic={{topic.name}}">
+      <a
+        class="topic__item-link"
+        href="{{ url_for('index') }}?topic={{topic.name}}"
+      >
         {{ topic.name }}
       </a>
       {% if request.user.is_authenticated %}

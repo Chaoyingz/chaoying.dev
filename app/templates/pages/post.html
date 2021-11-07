@@ -34,7 +34,22 @@
   <section class="post-source">{{ post.source | safe }}</section>
   {% endif %}
   <artice class="markdown-body"> {{ post.body | safe }}</artice>
-
+  <section class="topic">
+    {% for topic in post.topics %}
+    <div class="topic__item">
+      <a
+        class="topic__item-link"
+        href="{{ url_for('index') }}?topic={{topic.name}}"
+      >
+        <img
+          src="{{ url_for('static', path='/svg/topic.svg') }}"
+          alt="{{ topic.name }}"
+        />
+        {{ topic.name }}
+      </a>
+    </div>
+    {% endfor %}
+  </section>
   <script
     src="https://utteranc.es/client.js"
     repo="Chaoyingz/chaoying.dev"

@@ -67,3 +67,32 @@ main {
     margin: 0 auto;
     max-width: 692px;
 }
+
+.topic__item {
+    margin-bottom: 10px;
+}
+
+.topic__item {
+    display: flex;
+    margin-right: 8px;
+    background-color: #f2f2f2;
+    border-radius: 100px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.topic__item img {
+    display: block;
+    height: 16px;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.topic__item:hover {
+    background-color: #e6e6e6;
+}
+
+.topic__item .topic__item-link {
+    display: flex;
+    padding: 8px 16px;
+}
