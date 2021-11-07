@@ -1,3 +1,7 @@
+.archive-topic {
+    border-bottom: 1px solid #e6e6e6;
+}
+
 .archive__item {
     border-bottom: 1px solid #e6e6e6;
     margin-bottom: 32px;
@@ -17,4 +21,41 @@
 .archive__item-meta {
     padding: 5px 0px 12px;
     color: #666666;
+}
+
+.topic-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.topic__item {
+    margin-bottom: 10px;
+}
+
+.topic__item a {
+    display: block;
+    margin-right: 8px;
+    padding: 8px 16px;
+    background-color: #f2f2f2;
+    border-radius: 100px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.topic__item a:hover {
+    background-color: #e6e6e6;
+}
+
+.topic form {
+    margin-bottom: 20px;
+}
+
+.topic form input {
+    height: 36px;
+    width: 100%;
+    border-radius: 100px;
+    padding-left: 16px;
+    box-sizing: border-box;
+    border: 1px solid #b4b4b4;
 }

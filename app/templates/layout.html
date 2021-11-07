@@ -82,9 +82,9 @@ active_page|default('') %}
 
                 {% endfor %} {% if request.user.is_authenticated %}
                 <form
-                        action="{{ url_for('post-upload') }}"
-                        method="post"
-                        enctype="multipart/form-data"
+                    action="{{ url_for('post-create') }}"
+                    method="post"
+                    enctype="multipart/form-data"
                 >
                     <label
                             title="上传文章"

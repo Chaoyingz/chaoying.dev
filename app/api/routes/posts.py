@@ -1,6 +1,7 @@
 import copy
 from typing import no_type_check
 
+import jieba
 import pangu
 from bs4 import BeautifulSoup
 from jinja2.filters import do_striptags
@@ -10,9 +11,11 @@ from starlette.exceptions import HTTPException
 from starlette.requests import Request
 from starlette.responses import RedirectResponse, Response
 from starlette.routing import Router
+from tortoise.exceptions import IntegrityError
+from tortoise.functions import Count
 
 from app.core.response import TemplateResponse
-from app.models.posts import Post
+from app.models.posts import Post, Topic
 from app.service.markdown import get_markdown
 from app.service.readtime import read_time
 
@@ -20,16 +23,28 @@ router = Router()
 
 
 async def index(request: Request) -> Response:
-    posts = await Post.all().order_by("-timestamp")
-    return TemplateResponse("pages/index.html", {"request": request, "posts": posts})
+    topics = (
+        await Topic.annotate(count_related_posts=Count("posts"))
+        .all()
+        .order_by("-count_related_posts")
+    )
+    topic = request.query_params.get("topic")
+    if topic:
+        posts = await Post.filter(topics__name__contains=topic).order_by("-timestamp")
+    else:
+        posts = await Post.all().order_by("-timestamp")
+    return TemplateResponse(
+        "pages/index.html",
+        {"request": request, "posts": posts, "topics": topics, "topic": topic},
+    )
 
 
 @no_type_check
 @requires("authenticated")
-async def upload_post(request: Request) -> RedirectResponse:
+async def create_post(request: Request) -> RedirectResponse:
     form = await request.form()
     post = form["post_file"]
-    title, ext = post.filename.split(".")
+    title, _ = post.filename.split(".")
     body_md = await post.read()
     markdown = get_markdown()
     body_html = markdown.convert(body_md.decode("utf-8"))
@@ -44,7 +59,10 @@ async def upload_post(request: Request) -> RedirectResponse:
     description = do_striptags(body_html)[:128]
     slug = slugify(title, max_length=64)
     read_time_text = read_time(body_html)
-    await Post.update_or_create(
+    topics = await Topic.all()
+    seg = jieba.cut(body_html_pangu)
+    related_topics = [topic for topic in topics if topic.name in seg]
+    post, _ = await Post.update_or_create(
         title=title,
         defaults=dict(
             body=soup,
@@ -55,6 +73,7 @@ async def upload_post(request: Request) -> RedirectResponse:
             read_time=read_time_text,
         ),
     )
+    await post.topics.add(*related_topics)
     return RedirectResponse(url=request.url_for("post-get", slug=slug), status_code=303)
 
 
@@ -63,3 +82,14 @@ async def get_post(request: Request) -> Response:
     if not post:
         raise HTTPException(status_code=404)
     return TemplateResponse("pages/post.html", {"request": request, "post": post})
+
+
+@requires("authenticated")
+async def create_topic(request: Request) -> RedirectResponse:
+    form = await request.form()
+    topic = form["topic"]
+    try:
+        await Topic.create(name=topic.capitalize())
+    except IntegrityError:
+        ...
+    return RedirectResponse(url=request.url_for("index"), status_code=303)

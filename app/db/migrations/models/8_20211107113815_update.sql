@@ -1,0 +1,23 @@
+-- upgrade --
+CREATE TABLE IF NOT EXISTS "post" (
+    "id" SERIAL NOT NULL PRIMARY KEY,
+    "title" VARCHAR(128) NOT NULL UNIQUE,
+    "body" TEXT NOT NULL,
+    "toc" TEXT,
+    "description" TEXT,
+    "source" TEXT,
+    "slug" VARCHAR(64) NOT NULL,
+    "read_time" VARCHAR(64) NOT NULL,
+    "timestamp" TIMESTAMPTZ NOT NULL  DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMPTZ NOT NULL  DEFAULT CURRENT_TIMESTAMP
+);;
+CREATE TABLE IF NOT EXISTS "topic" (
+    "id" SERIAL NOT NULL PRIMARY KEY,
+    "name" VARCHAR(64) NOT NULL UNIQUE
+);;
+CREATE TABLE IF NOT EXISTS "user" (
+    "id" SERIAL NOT NULL PRIMARY KEY
+);-- downgrade --
+DROP TABLE IF EXISTS "post";
+DROP TABLE IF EXISTS "topic";
+DROP TABLE IF EXISTS "user";

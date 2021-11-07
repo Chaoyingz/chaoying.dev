@@ -1,25 +1,44 @@
 {% extends "./layout.html" %} {% set active_page = "Home" %} {% block title
 %}首页{% endblock %} {% block style %}
 <link
-        href="{{ url_for('static', path='/css/pages/index.css') }}"
-        rel="stylesheet"
+  href="{{ url_for('static', path='/css/pages/index.css') }}"
+  rel="stylesheet"
 />
 {% endblock %} {% block body %}
 <section class="archive">
-    {% for post in posts %}
-    <section class="archive__item">
-        <a href="{{ url_for('post-get', slug=post.slug) }}">
-            <h3 class="archive__item-title">{{ post.title }}</h3>
-            <p class="archive__item-desc">
-                {{ post.description }}...
-            </p>
-        </a>
-        <div class="archive__item-meta">
-            <span>{{ post.timestamp.strftime('%Y-%m-%d') }}</span>
-            <span> &#8226; </span>
-            <span>{{ post.read_time }}</span>
-        </div>
-    </section>
+  {% if topic %}
+  <div class="archive-topic">
+    <h2>{{ topic }}</h2>
+  </div>
+  {% endif %} {% for post in posts %}
+  <section class="archive__item">
+    <a href="{{ url_for('post-get', slug=post.slug) }}">
+      <h3 class="archive__item-title">{{ post.title }}</h3>
+      <p class="archive__item-desc">{{ post.description }}...</p>
+    </a>
+    <div class="archive__item-meta">
+      <span>{{ post.timestamp.strftime('%Y-%m-%d') }}</span>
+      <span> &#8226; </span>
+      <span>{{ post.read_time }}</span>
+    </div>
+  </section>
+  {% endfor %}
+</section>
+{% endblock %} {% block aside %}
+<section class="topic">
+  <h2>Recommended topics</h2>
+  {% if request.user.is_authenticated %}
+  <form action="{{ url_for('topic-create') }}" method="post">
+    <input type="text" name="topic" placeholder="create topic..." />
+    <input type="submit" style="display: none" />
+  </form>
+  {% endif %}
+  <div class="topic-content">
+    {% for topic in topics %}
+    <div class="topic__item">
+      <a href="{{ url_for('index') }}?topic={{topic.name}}">{{ topic.name }}</a>
+    </div>
     {% endfor %}
+  </div>
 </section>
 {% endblock %}

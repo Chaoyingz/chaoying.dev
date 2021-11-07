@@ -25,6 +25,7 @@ pangu = "^4.0.6"
 markdown-link-attr-modifier = "^0.2.0"
 Pygments = "^2.10.0"
 beautifulsoup4 = "^4.10.0"
+jieba = "^0.42.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"
