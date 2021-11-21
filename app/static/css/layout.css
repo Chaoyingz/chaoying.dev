@@ -9,8 +9,9 @@ body {
     margin-right: calc(100% - 100vw);
 }
 
-pre {
+pre code {
     white-space: pre-wrap;
+    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
 }
 
 h1,
@@ -55,6 +56,12 @@ button {
     max-width: 1504px;
 }
 
+header {
+    flex: 0 1 auto;
+    width: 224px;
+    min-height: 100vh;
+}
+
 .content-wrapper {
     flex: 1 1 auto;
     border-left: 1px solid #e6e6e6;
@@ -66,6 +73,13 @@ button {
 main {
     margin: 0 auto;
     max-width: 692px;
+}
+
+aside {
+    min-height: 100vh;
+    width: 394px;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 .topic__item {

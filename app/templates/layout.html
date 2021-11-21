@@ -33,22 +33,6 @@ active_page|default('') %}
         href="{{ url_for('static', path='/css/responsive.css') }}"
         rel="stylesheet"
     />
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-1BNH9KXK4F"
-    ></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        gtag("js", new Date());
-
-        gtag("config", "G-1BNH9KXK4F");
-    </script>
     <meta name="baidu-site-verification" content="code-eLpMAh8kU2"/>
     {% block desc %}{% endblock %}
 </head>
