@@ -20,14 +20,6 @@ active_page|default('') %}
             href="{{ url_for('static', path='/css/layout.css') }}"
             rel="stylesheet"
     />
-    <link
-            href="{{ url_for('static', path='/css/components/header.css') }}"
-            rel="stylesheet"
-    />
-    <link
-            href="{{ url_for('static', path='/css/components/aside.css') }}"
-            rel="stylesheet"
-    />
     {% block style %}{% endblock %}
     <link
         href="{{ url_for('static', path='/css/responsive.css') }}"
@@ -61,9 +53,9 @@ active_page|default('') %}
 
             <div class="menu">
                 {% for href, caption in navigation_bar %}
-                <a href="{{ href|e }}" {% if caption== active_page %} class="menu__item active" {% endif %}
-                   class="menu__item">{{ caption }}</a>
-
+                <div {% if caption== active_page %} class="menu__item active" {% endif %} class="menu__item">
+                    <a href="{{ href|e }}">{{ caption }}</a>
+                </div>
                 {% endfor %} {% if request.user.is_authenticated %}
                 <form
                     action="{{ url_for('post-create') }}"

@@ -1,4 +1,4 @@
-本文翻译自[**David Beazley**](https://dabeaz.com/about.html)在 PyCon'09 发表的[《A Curious Course on Coroutines and Concurrency》](https://dabeaz.com/coroutines/index.html)一文。
+本文翻译自**[David Beazley](https://dabeaz.com/about.html)**在 PyCon'09 发表的[《A Curious Course on Coroutines and Concurrency》](https://dabeaz.com/coroutines/index.html)一文。
 {: #source }
 
 ## 生成器和协程介绍
@@ -149,5 +149,7 @@ class GrepHandler:
 与协程版本相比类的版本存在一些明显的缺点：
 
 -   协程通过一个函数就可以定义
+
 -   类版本需要定义一个类、俩个方法、可能还需要格外的基类或库导入
+
 -   运行速度比协程更慢（因为它需要通过类的`self`方法读取变量）

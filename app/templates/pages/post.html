@@ -11,14 +11,6 @@
   rel="stylesheet"
 />
 <link href="{{ url_for('static', path='/css/autumn.css') }}" rel="stylesheet" />
-<meta
-  name="google-signin-client_id"
-  content="983961231255-0hj3o04b036fpq10otskfaotovfsh6fr.apps.googleusercontent.com"
-/>
-<meta
-  name="google-signin-scope"
-  content="https://www.googleapis.com/auth/analytics.readonly"
-/>
 {% endblock %} {% block body %}
 <div class="post" id="post">
   <div class="post-title">
@@ -51,24 +43,29 @@
     {% endfor %}
   </section>
   <script
-    src="https://utteranc.es/client.js"
-    repo="Chaoyingz/chaoying.dev"
-    issue-term="title"
-    theme="github-light"
-    crossorigin="anonymous"
-    async
+      src="https://utteranc.es/client.js"
+      repo="Chaoyingz/chaoying.dev"
+      issue-term="title"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
   ></script>
 </div>
-{% endblock %} {% block aside %} {% if post.source %}
-<section class="source">
-  <h2>Source</h2>
-  <p>{{ post.source | safe }}</p>
-</section>
-{% endif %}
-<section class="toc-container">
-  <h2>Table of Contents</h2>
-  {{ post.toc|safe }}
-</section>
-{% endblock %} {% block script %}
+{% endblock %}
+<div>
+  {% block aside %}
+  {% if post.source %}
+  <section class="source">
+    <h2>Source</h2>
+    <p>{{ post.source | safe }}</p>
+  </section>
+  {% endif %}
+  <section class="toc-container">
+    <h2>Table of Contents</h2>
+    {{ post.toc | safe }}
+  </section>
+  {% endblock %}
+</div>
+{% block script %}
 <script src="{{ url_for('static', path='/js/post.js') }}"></script>
 {% endblock %}

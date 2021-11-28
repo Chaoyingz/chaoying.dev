@@ -6,7 +6,7 @@
 我们的目标是：
 
 -   建立一个多任务操作系统
--   不依赖其他库只使用原始 Python 代码
+-   只使用原始 Python 代码不依赖其他库
 -   不使用线程
 -   不使用子进程
 -   使用生成器/协程
@@ -52,7 +52,7 @@ Part 2
 >>>
 ```
 
-`run()`方法执行任务到下一个 yield。
+`run()`方法将执行任务到下一个 yield 语句。
 
 ### 第二步：调度器
 
@@ -63,18 +63,18 @@ class Scheduler(object):
         self.taskmap = {}  # 跟踪所有任务的字典（每个任务都有独立的ID）
 
     def new(self, target):
-        """将新任务引入调度器"""
+        # 将新任务引入调度器
         newtask = Task(target)
         self.taskmap[newtask.tid] = newtask
         self.schedule(newtask)
         return newtask.tid
 
     def schedule(self, task):
-        """将任务放入队列，让任务准备好运行"""
+        # 将任务放入队列，让任务准备好运行
         self.ready.put(task)
 
     def mainloop(self):
-        """从任务队列拉取任务，将它们运行到下一个yield语句"""
+        # 从任务队列拉取任务，将它们运行到下一个yield语句
         while self.taskmap:
             task = self.ready.get()
             result = task.run()
@@ -108,7 +108,7 @@ I'm foo
 I'm bar
 ```
 
-需要重复强调的一点是**yield 就是 trap**。每个任务都会一直运行直到遇到下一个 yield，此时调度器将获得控制权并切换到下一个任务。
+需要重复强调的一点是**yield 语句就是 trap**。每个任务都会一直运行直到遇到下一个 yield 语句，此时调度器将获得控制权并切换到下一个任务。
 
 但目前存在的问题是如果任务停止，调度器将崩溃。
 
@@ -118,7 +118,7 @@ I'm bar
 class Scheduler(object):
     ...
     def exit(self, task):
-        """从任务字典中移除task"""
+        # 从任务字典中移除task
         print(f"Task {task.tid} terminated")
         del self.taskmap[task.tid]
     ...
@@ -162,11 +162,11 @@ Task 1 terminated
 
 ### 第四步：系统调用
 
-在真实的操作系统中，traps 是应用程序请求系统服务的一种方式。在我们的代码中，调度器就是操作系统，yield 语句就是 trap。要请求调度器的服务，任务要使用 yield 语句来获取值。
+在真实的操作系统中，traps 是应用程序请求系统服务的一种方式。在我们的代码中，调度器就是操作系统，yield 语句就是 trap。任务可以使用 yield 语句来与调度器交互。
 
 ```python
 class SystemCall(object):
-    """系统调用基类，所有的系统操作都将在这个类中实现"""
+    # 系统调用基类，所有的系统操作都将在这个类中实现
     def handle(self):
         pass
 
@@ -332,7 +332,7 @@ class Scheduler(object):
             self.schedule(task)
 
     def waitforexit(self, task, waittid):
-        """将某个任务设置为另一个任务的子任务"""
+        # 将某个任务设置为另一个任务的子任务
         if waittid in self.taskmap:
             self.exit_warting.setdefault(waittid, []).append(task)
             return True
@@ -379,11 +379,11 @@ Child done
 Task 1 terminated
 ```
 
-任务引用其他任务的唯一方法是使用调度器分配好的数字 ID，这是一种封闭和安全的策略。它将所有任务分割开来（无内部链接），所有任务管理都将由调度器实现。下面让我们来实现一个简单的 echo sever：
+我们可以看到：**任务引用其他任务的唯一方法是使用调度器分配好的数字 ID**，这是一种封闭和安全的策略。它将所有任务分割开来（无内部链接），所有任务管理都将由调度器实现。下面让我们来实现一个简单的 echo sever：
 
 ```python
 def handle_client(client, addr):
-    """客户端请求处理器"""
+    # 客户端请求处理器
     print(f"Connection from {addr}")
     while True:
         data = client.recv(65536)
@@ -395,7 +395,7 @@ def handle_client(client, addr):
     yield
 
 def server(port):
-    """服务器"""
+    # 服务器
     print("Server starting")
     sock = socket(AF_INET, SOCK_STREAM)
     sock.bind(("", port))
@@ -419,4 +419,4 @@ I'm alive!
 Server starting
 ```
 
-调度器将锁定不再执行任何任务，真实的操作系统会暂停 Python 解释器会等待 I/O 操作完成，但在我们的多任务操作中这样的操作显然是不可取的，它会阻塞整个调度器。
+当服务器运行时，调度器将锁定不再执行任何任务，真实的操作系统会暂停 Python 解释器会等待 I/O 操作完成，但在我们的多任务操作中这样的操作显然是不可取的，它会阻塞整个调度器。
