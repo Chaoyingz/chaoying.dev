@@ -26,6 +26,22 @@
   <section class="post-source">{{ post.source | safe }}</section>
   {% endif %}
   <artice class="markdown-body"> {{ post.body | safe }}</artice>
+
+  {% if linked_post %}
+  <section class="pagination">
+    <div class="pagination__item">
+      {% if linked_post.prev %}
+      <a href="{{ url_for('post-get', slug=linked_post.prev.slug) }}">< Previous</a>
+      {% endif %}
+    </div>
+    <div class="pagination__item">
+      {% if linked_post.next %}
+      <a href="{{ url_for('post-get', slug=linked_post.next.slug) }}">Next ></a>
+      {% endif %}
+    </div>
+  </section>
+  {% endif %}
+
   <section class="topic">
     {% for topic in post.topics %}
     <div class="topic__item">
@@ -33,10 +49,6 @@
         class="topic__item-link"
         href="{{ url_for('index') }}?topic={{topic.name}}"
       >
-        <img
-          src="{{ url_for('static', path='/svg/topic.svg') }}"
-          alt="{{ topic.name }}"
-        />
         {{ topic.name }}
       </a>
     </div>

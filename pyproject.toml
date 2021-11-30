@@ -18,7 +18,6 @@ PyJWT = "^2.2.0"
 Markdown = "^3.3.4"
 uvicorn = {extras = ["standard"], version = "^0.15.0"}
 tortoise-orm = {extras = ["asyncpg"], version = "^0.17.8"}
-markdown-captions = "^2"
 aerich = "^0.5.8"
 asgi-sitemaps = "^0.3.2"
 pangu = "^4.0.6"
@@ -26,6 +25,7 @@ markdown-link-attr-modifier = "^0.2.0"
 Pygments = "^2.10.0"
 beautifulsoup4 = "^4.10.0"
 jieba = "^0.42.1"
+markdown-captions = {git = "https://github.com/Evidlo/markdown_captions.git", rev = "alt"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

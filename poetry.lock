@@ -442,13 +442,20 @@ testing = ["coverage", "pyyaml"]
 [[package]]
 name = "markdown-captions"
 version = "2"
-description = "Turn markdown images into captioned images using <figure>"
+description = ""
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
 Markdown = ">=3.0.1"
+
+[package.source]
+type = "git"
+url = "https://github.com/Evidlo/markdown_captions.git"
+reference = "alt"
+resolved_reference = "b44dc39ed2e6c9acb2b4f1892363726f55f86b83"
 
 [[package]]
 name = "markdown-link-attr-modifier"
@@ -982,7 +989,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "1fb6deaa619f7291b8bd06503473471c3a387fae64b5eb548411c7e9bcf24859"
+content-hash = "126502d7deb467b482e8f364d4bf3c393d0ac0c89009cecdd0baea55416fe1ca"
 
 [metadata.files]
 aerich = [
@@ -1217,10 +1224,7 @@ markdown = [
     {file = "Markdown-3.3.4-py3-none-any.whl", hash = "sha256:96c3ba1261de2f7547b46a00ea8463832c921d3f9d6aba3f255a6f71386db20c"},
     {file = "Markdown-3.3.4.tar.gz", hash = "sha256:31b5b491868dcc87d6c24b7e3d19a0d730d59d3e46f4eea6430a321bed387a49"},
 ]
-markdown-captions = [
-    {file = "markdown-captions-2.tar.gz", hash = "sha256:f653955d4ca22cbe84c39dc19693317ec2ce7a0af03cf5d44b349be7baf0dc97"},
-    {file = "markdown_captions-2-py3-none-any.whl", hash = "sha256:0820b7ca1e7ea9041a0462584b4211d8023e6849709395fa34bfcd57c01bb49a"},
-]
+markdown-captions = []
 markdown-link-attr-modifier = [
     {file = "markdown_link_attr_modifier-0.2.0-py3-none-any.whl", hash = "sha256:01b07d7a466ff7c721f97d66b08ec60a54e8d46c287695b649507ae57a42ff4b"},
     {file = "markdown_link_attr_modifier-0.2.0.tar.gz", hash = "sha256:94eacc4b7cfda9b5c883fb8c9f218b0602889c64d12977b31994d10b7b720a59"},

@@ -17,8 +17,8 @@ def get_markdown() -> Markdown:
             "fenced_code",
             "codehilite",
             TocExtension(slugify=_slugify, permalink="", toc_depth=3),
-            "attr_list",
             "markdown_captions",
+            "attr_list",
             LinkAttrModifierExtension(
                 new_tab="external_only", no_referrer="external_only", auto_title="on"
             ),

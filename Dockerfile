@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 EXPOSE 8000
 WORKDIR /code
 
-RUN apk --update --no-cache add gcc musl-dev libffi-dev openssl-dev python3-dev build-base
+RUN apk --update --no-cache add gcc musl-dev libffi-dev openssl-dev python3-dev build-base git
 
 RUN pip install poetry --no-cache-dir
 COPY poetry.lock pyproject.toml ./

@@ -85,7 +85,26 @@ async def get_post(request: Request) -> Response:
     )
     if not post:
         raise HTTPException(status_code=404)
-    return TemplateResponse("pages/post.html", {"request": request, "post": post})
+    linked_post = {}
+    if "（" in post.title:
+        chinese_numerals = ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十"]
+        numeral = post.title[-2]
+        numeral_index = chinese_numerals.index(numeral)
+        prev_title = post.title.replace(numeral, chinese_numerals[numeral_index - 1])
+        next_title = post.title.replace(numeral, chinese_numerals[numeral_index + 1])
+        if numeral_index > 0:
+            linked_post["prev"] = await Post.get_or_none(title=prev_title)
+
+        if numeral_index < 9:
+            linked_post["next"] = await Post.get_or_none(title=next_title)
+
+        if not linked_post.get("prev") and not linked_post.get("next"):
+            linked_post = {}
+    print(linked_post)
+    return TemplateResponse(
+        "pages/post.html",
+        {"request": request, "post": post, "linked_post": linked_post},
+    )
 
 
 @requires("authenticated")

@@ -11,7 +11,7 @@ AWS Batch 将作业分为四个部分：
 3. 作业队列（Job Queues）：所有已提交的作业都在作业队列中
 4. 计算环境（Compute Environment）：运行作业的计算资源
 
-![AWS Batch运作流程](https://chaoying-1258336136.file.myqcloud.com/0_LhyLjfye1TUn341e.png/compress "AWS Batch运作流程")
+![AWS Batch运作流程](https://chaoying-1258336136.file.myqcloud.com/0_LhyLjfye1TUn341e.png/compress "AWS Batch运作流程"){: alt="AWS Batch 运作流程"}
 
 ## 创建 Batch 资源步骤
 

@@ -212,6 +212,6 @@ def grep(pattern):
 
 操作系统将应用程序放到 CPU 上运行直到遇到了 trap，此时程序会暂停执行，操作系统开始运行。
 
-![多任务切换](https://chaoying-1258336136.file.myqcloud.com/mutitask.png/compress "操作系统多任务切换")
+![多任务切换](https://chaoying-1258336136.file.myqcloud.com/mutitask.png/compress "操作系统多任务切换"){: alt="操作系统多任务切换"}
 
 yield 语句其实就是一种 trap，当生成器函数遇到 yield 语句时，它就会立即暂停执行。如果你把 yield 看作是 trap 我们就可以用它来建立多任务操作系统。
