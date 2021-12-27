@@ -46,8 +46,7 @@
 .markdown-body h3,
 .markdown-body h4,
 .markdown-body .h2 {
-    margin-bottom: -0.37em;
-    margin-top: 1.6em;
+    margin: 1.6em 0 0.16em;
 }
 
 .markdown-body h2,
@@ -62,11 +61,16 @@
 
 .markdown-body p {
     line-height: 1.8;
+    margin: 1.5em 0;
 }
 
 .markdown-body ol,
 .markdown-body ul {
     padding: 0;
+}
+
+.markdown-body ul {
+    margin: 1.5em 0;
 }
 
 .markdown-body li {
@@ -93,7 +97,8 @@
     padding-left: 20px;
     margin-left: 0;
     padding-bottom: 2px;
-    border-left: 6px solid #333333;
+    border-left: 4px solid #006bb3;
+    font-style: italic;
 }
 
 .markdown-body blockquote p {

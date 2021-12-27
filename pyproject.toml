@@ -26,6 +26,7 @@ Pygments = "^2.10.0"
 beautifulsoup4 = "^4.10.0"
 jieba = "^0.42.1"
 markdown-captions = {git = "https://github.com/Evidlo/markdown_captions.git", rev = "alt"}
+pymdown-extensions = "^9.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.5"

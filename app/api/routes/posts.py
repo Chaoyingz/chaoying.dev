@@ -56,7 +56,7 @@ async def create_post(request: Request) -> RedirectResponse:
         source_element.decompose()
     else:
         source = None
-    description = do_striptags(body_html)[:128]
+    description = do_striptags(soup.text)[:128]
     slug = slugify(title, max_length=64)
     read_time_text = read_time(body_html)
     topics = await Topic.all()
@@ -100,7 +100,6 @@ async def get_post(request: Request) -> Response:
 
         if not linked_post.get("prev") and not linked_post.get("next"):
             linked_post = {}
-    print(linked_post)
     return TemplateResponse(
         "pages/post.html",
         {"request": request, "post": post, "linked_post": linked_post},
@@ -121,7 +120,6 @@ async def create_topic(request: Request) -> RedirectResponse:
         for post in posts:
             soup = BeautifulSoup(post.body, "html.parser")
             seg = list(jieba.cut(soup.text))
-            print(topic.name in seg)
             if topic.name in seg:
                 await post.topics.add(topic)
     return RedirectResponse(url=request.url_for("index"), status_code=303)

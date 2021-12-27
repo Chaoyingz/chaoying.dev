@@ -9,9 +9,19 @@ body {
     margin-right: calc(100% - 100vw);
 }
 
+@font-face {
+    font-family: "Fira Code";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+        url("../fonts/fira-code-v14-latin-regular.woff2") format("woff2"),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url("../fonts/fira-code-v14-latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 pre code {
     white-space: pre-wrap;
-    font-family: Menlo, Monaco, "Courier New", Courier, monospace;
+    font-family: "Fira Code", Menlo, Monaco, Courier, monospace;
 }
 
 h1,
@@ -260,7 +270,7 @@ aside section {
 }
 
 .source {
-    line-height: 22px;
+    line-height: 26px;
 }
 
 .toc-container {

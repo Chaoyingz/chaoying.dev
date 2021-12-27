@@ -22,6 +22,8 @@ def get_markdown() -> Markdown:
             LinkAttrModifierExtension(
                 new_tab="external_only", no_referrer="external_only", auto_title="on"
             ),
+            "pymdownx.tilde",
+            "pymdownx.highlight",
         ]
     )
     return md

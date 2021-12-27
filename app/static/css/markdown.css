@@ -25,7 +25,6 @@ article {
 }
 
 .markdown-body pre {
-    overflow: auto;
     border-radius: 10px;
     margin: 0;
 }
